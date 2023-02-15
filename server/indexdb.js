@@ -17,5 +17,5 @@ const sequelize = new Sequelize(
 );
 user(sequelize);
 products(sequelize);
-console.log(sequelize.models, "MODELOS");
+
 module.exports = { sequelize, ...sequelize.models };
