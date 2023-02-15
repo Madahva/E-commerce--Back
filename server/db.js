@@ -3,7 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const routes = require("./src/Routes/index");
-const sequelize = require("./indexdb.js");
+const { sequelize } = require("./indexdb.js");
 
 const server = express();
 
@@ -22,5 +22,6 @@ server.use(routes);
     console.error("Unable to sync to the database:", error);
   }
 })();
+const { user, products } = sequelize.models;
 
 module.exports = server;

@@ -18,10 +18,8 @@ const PORT = process.env.PORT;
 
 (async () => {
   try {
-    sequelize
-      .authenticate()
-      .then(() => console.log("Authenticate has been successfull"));
+    sequelize.then(() => console.log("Authenticate has been successfull"));
   } catch (error) {
-    console.log("Authenticate has not been succesfull", error);
+    //console.log("Authenticate has not been succesfull");
   }
 })();

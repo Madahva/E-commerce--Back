@@ -1,9 +1,7 @@
 const Router = require("express");
-
+const products =require("./products.js")
 const router = Router();
 
-router.use("/", async (req,res) => {
-  res.send("hola mundo");
-});
+router.use("/", products);
 
 module.exports = router;

@@ -1,5 +1,7 @@
 const { Sequelize } = require("sequelize");
 const { config } = require("dotenv");
+const user = require("./src/models/User.js");
+const products = require("./src/models/products.js");
 
 config();
 
@@ -13,5 +15,7 @@ const sequelize = new Sequelize(
     logging: false,
   }
 );
-
-module.exports = sequelize;
+user(sequelize);
+products(sequelize);
+console.log(sequelize.models, "MODELOS");
+module.exports = { sequelize, ...sequelize.models };
