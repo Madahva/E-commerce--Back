@@ -30,6 +30,10 @@ const user = (sequelize)=>{sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    roll :{
+      type: DataTypes.BOOLEAN , 
+      defaultValue: false
+    }
   },
   {
     timestamps: false,

@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
-// const sequelize = require("../../indexdb.js");
 
-const products = (sequelize) => {
+
+const products = (sequelize : any) => {
   sequelize.define(
     "products",
     {

@@ -1,4 +1,4 @@
-const {dbinfo ,createproduct} = require("../Controlllers/products.js")
+const dbinfo  = require( "../Controlllers/products.ts")
 const Router = require("express");
 const router = Router();
 
