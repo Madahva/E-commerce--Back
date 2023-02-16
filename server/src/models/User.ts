@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 //  const sequelize = require("../../indexdb.js");
 
-const user = (sequelize)=>{sequelize.define(
+const user = (sequelize : any)=>{sequelize.define(
   "user",
   {
     id: {
