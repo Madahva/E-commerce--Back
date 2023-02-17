@@ -1,19 +1,10 @@
-const goo = require("../models/products");
+import { Request, Response } from "express";
 
-const dbinfo = async (req: Request, res : Response) => {
+export const getUsers = async (req: Request, res: Response): Promise<void> => {
   try {
-    
+    // Código asíncrono aquí...
+    res.json({ message: "vamos a hacerlo" });
   } catch (error) {
-   
+    res.status(500).send("nopaso");
   }
-};
-const createproduct = async (req : Request, res: Response) => {
-  try {
-    
-  } catch (error) {
-    
-  
-  }
-};
-
-module.exports = { dbinfo, createproduct };
+}

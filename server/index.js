@@ -1,25 +1,28 @@
-const server = require("./db.js");
-const sequelize = require("./indexdb.js");
-const { config } = require("dotenv");
+"use strict";
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const router = require("./dist/Routes/index.js").default;
+const sequelize = require("./dist/indexdb.js");
+const server = express();
 
-config();
+function midylware(req, res, next) {
+  return next();
+}
 
-const PORT = process.env.PORT;
+server.use(cors());
+server.use(morgan("dev"));
+server.use(express.json());
+server.use(cookieParser());
+server.use("/", router);
 
-(async function startServer() {
-  try {
-    server.listen(PORT, () =>
-      console.log(`Server running on port http://localhost:${PORT}`)
-    );
-  } catch (error) {
-    console.log("Unable to initiate", error);
-  }
-})();
 
-(async () => {
-  try {
-    sequelize.then(() => console.log("Authenticate has been successfull"));
-  } catch (error) {
-    //console.log("Authenticate has not been succesfull");
-  }
-})();
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () =>
+  console.log(`Server running on port http://localhost:${PORT}`)
+);
+
+
+module.exports = server;
