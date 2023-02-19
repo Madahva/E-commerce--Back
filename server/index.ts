@@ -9,6 +9,7 @@ const server: Application = express();
 server.use(cors());
 server.use(morgan("dev"));
 server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 server.use(cookieParser());
 server.use(routes);
 

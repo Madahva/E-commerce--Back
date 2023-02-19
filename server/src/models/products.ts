@@ -1,32 +1,18 @@
-import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from "../indexdb";
+import { Model, DataTypes, Sequelize } from "sequelize";
+import {sequelize} from "../indexdb"; // Importa la instancia de Sequelize
 
-interface ProductAttributes {
-  id: string;
-  name: string;
-  quantity: number;
-  description?: string;
-  img?: string;
-  price: number;
-}
-
-type ProductCreationAttributes = Optional<ProductAttributes, "id">;
-
-class Product
-  extends Model<ProductAttributes, ProductCreationAttributes>
-  implements ProductAttributes
-{
+class Products extends Model {
   public id!: string;
   public name!: string;
   public quantity!: number;
   public description?: string;
   public img?: string;
   public price!: number;
-
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public deleted!: boolean;
+  public admin!: boolean;
+  public rating!: number;
 }
-Product.init(
+Products.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -47,17 +33,31 @@ Product.init(
     },
     img: {
       type: DataTypes.STRING,
+      defaultValue:
+        "https://www.supercoloring.com/sites/default/files/styles/coloring_medium/public/cif/2022/02/521-bust-in-silhouette-coloring-page.png",
     },
     price: {
       type: DataTypes.DECIMAL(6, 2), // hasta un maximo de 9999.99
       allowNull: false,
     },
+    deleted: {
+      //borrado logico
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    rating: {
+      type: DataTypes.DECIMAL(3, 2),
+      defaultValue: 5.0,
+    },
   },
   {
-    sequelize,
-    timestamps: false,
-    modelName: "Product",
+    sequelize: sequelize,
+    tableName: "products", // nombre de la tabla en la base de datos
   }
 );
 
-export default Product;
+export default Products;
