@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-const index_1 = __importDefault(require("./src/Routes/index"));
+const index_1 = __importDefault(require("../server/dist/Routes/index"));
 const server = (0, express_1.default)();
 server.use((0, cors_1.default)());
 server.use((0, morgan_1.default)("dev"));
