@@ -1,16 +1,17 @@
-import { Model, DataTypes, Sequelize } from "sequelize";
-import {sequelize} from "../indexdb"; // Importa la instancia de Sequelize
+import { Model, DataTypes} from "sequelize";
+import { sequelize } from "../indexdb"; // Importa la instancia de Sequelize
+import Category from "./category";
 
 class Products extends Model {
   public id!: string;
   public name!: string;
-  public quantity!: number;
+  public quantity?: number;
   public description?: string;
-  public img?: string;
+  public img!: string;
   public price!: number;
-  public deleted!: boolean;
-  public admin!: boolean;
+  public deleted?: boolean;
   public rating!: number;
+  public category! : number;
 }
 Products.init(
   {
@@ -45,13 +46,13 @@ Products.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    admin: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
     rating: {
       type: DataTypes.DECIMAL(3, 2),
       defaultValue: 5.0,
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
@@ -59,5 +60,5 @@ Products.init(
     tableName: "products", // nombre de la tabla en la base de datos
   }
 );
-
+// Products.belongsTo(Category, { foreignKey: 'categoryId' });
 export default Products;

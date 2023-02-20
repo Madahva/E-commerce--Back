@@ -4,7 +4,6 @@ const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const router = require("./dist/Routes/index.js").default;
-const sequelize = require("./dist/indexdb.js");
 const server = express();
 
 function midylware(req, res, next) {

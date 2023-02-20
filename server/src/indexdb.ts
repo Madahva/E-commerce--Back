@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize";
 import { config } from "dotenv";
-import Producto from "./models/products";
 config();
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
@@ -34,4 +33,5 @@ export const sequelize = new Sequelize(
   }
 })();
 
-// export default sequelize;
+
+export default sequelize;

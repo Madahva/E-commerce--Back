@@ -1,15 +1,9 @@
-import { Router, Request, Response } from "express";
-import { getUsers } from "../Controlllers/products";
-
+import { getUsers ,postproduc , borradologico ,getid} from "../Controlllers/products";
+import { Router} from "express";
 const router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
-  try {
-    const productos = await getUsers(req, res);
-    res.status(200).json(productos);
-  } catch (err) {
-    res.status(402).send(err);
-  }
-});
-
+router.get("/", getUsers);
+router.post("/",postproduc)
+router.delete("/:id",borradologico)
+router.get("/:id",getid)
 export default router;
