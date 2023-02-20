@@ -3,6 +3,6 @@ import {Router } from "express";
 const router = Router();
 
 router.use("/products",products);
-router.use("/category",)
+// router.use("/category",)
 
 export default router;

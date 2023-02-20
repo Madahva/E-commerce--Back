@@ -52,7 +52,7 @@ export const postproduc = async (
     description,
     quantity,
     name,
-    categoryId,
+    category,
   } = req.body;
 
   try {
@@ -73,10 +73,10 @@ export const postproduc = async (
       description,
       quantity,
       name,
-      categoryId,
+      category,
     });
     // const newPro = await Category.findOne({
-    //   where: { ctypecategory : categoryId },
+    //   where: { category : categoryId },
     // });
     //  newproduc.addCategory(newPro);
     
@@ -85,6 +85,7 @@ export const postproduc = async (
       .json({ message: "Product created successfully", data: newproduc });
   } catch (error) {
     res.status(500).json({ error: "Server error" });
+    console.log(error)
   }
 };
 

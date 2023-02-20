@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import { config } from "dotenv";
+
 config();
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
@@ -32,6 +33,5 @@ export const sequelize = new Sequelize(
     console.error("Unable to sync to the database:", error);
   }
 })();
-
 
 export default sequelize;
