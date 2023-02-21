@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { escapeLeadingUnderscores } from "typescript";
+
 import Category from "../models/category";
 import Products from "../models/products";
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
   const { name } = req.query;
-  console.log(req.query);
+  
   try {
     if (!name) {
       const db = await Products.findAll();
@@ -27,7 +27,7 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
     }
   } catch (error) {
     res.status(402).send(error);
-    console.log(error);
+   
   }
 };
 export const getid = async (req: Request, res: Response): Promise<void> => {
@@ -76,7 +76,7 @@ export const postproduc = async (
       category,
     });
     // const newPro = await Category.findOne({
-    //   where: { category : categoryId },
+    //   where: { category : typecategory },
     // });
     //  newproduc.addCategory(newPro);
     
@@ -85,7 +85,7 @@ export const postproduc = async (
       .json({ message: "Product created successfully", data: newproduc });
   } catch (error) {
     res.status(500).json({ error: "Server error" });
-    console.log(error)
+  
   }
 };
 
@@ -107,6 +107,5 @@ export const borradologico = async (
     }
   } catch (error) {
     res.send(error);
-    console.log(error);
   }
 };

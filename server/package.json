@@ -36,7 +36,9 @@
     "nodemon": "^2.0.20",
     "pg": "^8.9.0",
     "pg-hstore": "^2.3.4",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^6.28.0",
+    "sequelize-typescript": "^2.1.5",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {

@@ -1,5 +1,8 @@
+
 import { Sequelize } from "sequelize";
 import { config } from "dotenv";
+import User from "./models/User";
+
 
 config();
 
@@ -34,5 +37,3 @@ export const sequelize = new Sequelize(
   }
 })();
 
-
-export default sequelize;

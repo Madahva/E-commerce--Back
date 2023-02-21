@@ -1,5 +1,5 @@
-import { Model, DataTypes} from "sequelize";
-import { sequelize } from "../indexdb"; // Importa la instancia de Sequelize
+import { Model, DataTypes, Sequelize } from "sequelize";
+import { sequelize } from "../db"; // Importa la instancia de Sequelize
 import Category from "./category";
 
 class Products extends Model {
@@ -56,9 +56,11 @@ Products.init(
     },
   },
   {
-    sequelize: sequelize,
+    sequelize,
     tableName: "products", // nombre de la tabla en la base de datos
   }
 );
-// Products.belongsTo(Category, { foreignKey: 'categoryId' });
+Products.belongsTo(Category);
+Category.belongsToMany(Products ,{ through: 'producscategory'});
+
 export default Products;
