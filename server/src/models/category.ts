@@ -14,7 +14,7 @@ Category.init(
       primaryKey: true,
       allowNull: false,
     },
-    category: {
+    typecategory: {
       type: DataTypes.STRING,
       allowNull: false,
     },

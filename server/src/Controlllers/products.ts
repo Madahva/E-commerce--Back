@@ -53,6 +53,7 @@ export const postproduc = async (
     quantity,
     name,
     category,
+    Marca
   } = req.body;
 
   try {
@@ -61,7 +62,7 @@ export const postproduc = async (
       res.status(400).json({ error: "Product already exists" });
     }
     if (!price || !img || !description || !name) {
-      res.send("insert information");
+      res.status(400).send("insert information");
     }
 
     const newproduc = await Products.create({
@@ -74,17 +75,17 @@ export const postproduc = async (
       quantity,
       name,
       category,
+      Marca
     });
     const newPro = await Category.findOne({
-      where: { typecategory : category },
+      where: { typecategory : category},
     });
-    //  newproduc.addCategory(newPro);
     res
       .status(201)
-      .json({ message: "Product created successfully", data: newproduc });
+      .json({ message: "Product created successfully"});
   } catch (error) {
     res.status(500).json({ error: "Server error" });
-  
+   console.log(error)
   }
 };
 

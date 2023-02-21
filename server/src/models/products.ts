@@ -1,4 +1,5 @@
 import { Model, DataTypes, Sequelize } from "sequelize";
+// import { AllowNull } from "sequelize-typescript";
 import { sequelize } from "../db"; // Importa la instancia de Sequelize
 import Category from "./category";
 
@@ -12,7 +13,11 @@ class Products extends Model {
   public deleted?: boolean;
   public rating!: number;
   public category! : number;
+
+ 
+  
 }
+;
 Products.init(
   {
     id: {
@@ -55,6 +60,10 @@ Products.init(
       allowNull: false,
       
     },
+    Marca :{
+      type: DataTypes.STRING,
+      allowNull: false ,
+    }
   },
   {
     sequelize,
@@ -62,6 +71,6 @@ Products.init(
   }
 );
 Products.belongsTo(Category);
-Category.belongsToMany(Products ,{ through: 'producscategory'});
+ Category.belongsToMany(Products ,{ through: 'producscategory'});
 
 export default Products;
