@@ -1,16 +1,4 @@
-import { Model, Column, Table, DataType } from "sequelize-typescript";
-
-interface Card {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  type: string;
-  gender: string;
-  origin: { name: string };
-  location: { name: string };
-  image: string;
-}
+import { Model, Column, Table } from "sequelize-typescript";
 
 @Table
 export class User extends Model<User> {
@@ -22,9 +10,4 @@ export class User extends Model<User> {
 
   @Column
   password!: string;
-
-  @Column({
-    type: DataType.ARRAY(DataType.JSON),
-  })
-  favourites!: Card[];
 }
