@@ -75,11 +75,10 @@ export const postproduc = async (
       name,
       category,
     });
-    // const newPro = await Category.findOne({
-    //   where: { category : typecategory },
-    // });
+    const newPro = await Category.findOne({
+      where: { typecategory : category },
+    });
     //  newproduc.addCategory(newPro);
-    
     res
       .status(201)
       .json({ message: "Product created successfully", data: newproduc });

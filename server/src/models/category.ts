@@ -14,7 +14,7 @@ Category.init(
       primaryKey: true,
       allowNull: false,
     },
-    typecategory: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -25,4 +25,5 @@ Category.init(
   }
 );
 
+// Category.belongsToMany(Products,{ through: 'producscategory'})
 export default Category;

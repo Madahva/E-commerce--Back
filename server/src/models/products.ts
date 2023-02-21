@@ -53,6 +53,7 @@ Products.init(
     category: {
       type: DataTypes.STRING,
       allowNull: false,
+      
     },
   },
   {
