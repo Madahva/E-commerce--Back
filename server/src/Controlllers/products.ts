@@ -101,10 +101,11 @@ export const borradologico = async (
     const borrado = await Products.findByPk(id);
     if (borrado === null) {
       res.status(200).send(`resource with id ${id} not found`);
-    } else if (borrado.deleted === false) {
+    } else if (!borrado.deleted) {
       await Products.update({ deleted: true }, { where: { id: id } });
       res.status(200).send(`resource removed  id : ${id}`);
-    } else if (borrado.deleted === true) {
+    } else if (borrado.deleted 
+      ) {
       await Products.update({ deleted: false }, { where: { id: id } });
       res.status(200).send({ message: "User is active" });
     }
