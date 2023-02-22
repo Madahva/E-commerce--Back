@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-
 import Category from "../models/category";
 import Products from "../models/products";
 
-export const getUsers = async (req: Request, res: Response): Promise<void> => {
+export const getproduc = async (req: Request, res: Response): Promise<void> => {
   const { name } = req.query;
-  
+
   try {
     if (!name) {
       const db = await Products.findAll();
@@ -27,7 +26,7 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
     }
   } catch (error) {
     res.status(402).send(error);
-   
+    console.log(error);
   }
 };
 export const getid = async (req: Request, res: Response): Promise<void> => {
@@ -39,7 +38,7 @@ export const getid = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ error: "Server error" });
   }
 };
-export const postproduc = async (
+export const postproduct = async (
   req: Request,
   res: Response
 ): Promise<void> => {
@@ -52,40 +51,44 @@ export const postproduc = async (
     description,
     quantity,
     name,
-    category,
-    Marca
+    category_id, // cambia el nombre del campo a category_id
+    Marca,
   } = req.body;
 
   try {
     const repet = await Products.findOne({ where: { name: name } });
     if (repet !== null) {
       res.status(400).json({ error: "Product already exists" });
-    }
-    if (!price || !img || !description || !name) {
-      res.status(400).send("insert information");
-    }
+    } else if (!price || !img || !description || !name) {
+      res.status(400).send({ error: "insert information" });
+    } else if (!category_id) {
+      res.status(400).send({ error: "insert category" });
+    } else {
+      // Busca la categoría en la base de datos
+      const category = await Category.findOne({ where: { typecategory: category_id } });
+      if (category === null) {
+        res.status(400).json({ error: "Category does not exist" });
+      } else {
+        // Crea el producto con el id de la categoría
+        const newproduc = await Products.create({
+          id,
+          rating,
+          deleted,
+          price,
+          img,
+          description,
+          quantity,
+          name,
+          category_id: category.id, // agrega el id de la categoría
+          Marca,
+        });
 
-    const newproduc = await Products.create({
-      id,
-      rating,
-      deleted,
-      price,
-      img,
-      description,
-      quantity,
-      name,
-      category,
-      Marca
-    });
-    const newPro = await Category.findOne({
-      where: { typecategory : category},
-    });
-    res
-      .status(201)
-      .json({ message: "Product created successfully"});
+        res.status(201).json({ message: "Product created successfully" });
+      }
+    }
   } catch (error) {
     res.status(500).json({ error: "Server error" });
-   console.log(error)
+    console.log(error);
   }
 };
 
@@ -109,3 +112,14 @@ export const borradologico = async (
     res.send(error);
   }
 };
+// {
+//   "name" : "drone 55l",
+//   "quantity" :  5 ,
+//    "description": "el producto de novedad",
+//    "img" : "bjnojnjdob",
+//    "price" : 759,
+//    "rating" : 4,
+//    "Marca": "lg",
+//    "category_id": "drone"
+   
+// }

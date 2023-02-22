@@ -2,10 +2,10 @@ import { Model ,DataTypes } from "sequelize";
 import  {sequelize} from "../db";
 class User extends Model {
     public id!: string;
-    public photo!: Text;
-    public email?: number;
+    public name!: string;
+    public email!: string;
     public roll?: string;
-    public deleted!: string;
+    public deleted?: string;
    
 }
 User.init(
@@ -16,18 +16,15 @@ User.init(
       primaryKey: true,
 
       allowNull: false,
-    },
-    photo: {
-      // la foto del rostro del usuario
-      type: DataTypes.TEXT,
-      defaultValue:
-        "https://www.supercoloring.com/sites/default/files/styles/coloring_medium/public/cif/2022/02/521-bust-in-silhouette-coloring-page.png",
+    },name :{
+      type : DataTypes . STRING, 
+      allowNull : false
     },
     email: {
       type: DataTypes.STRING, //  contacto del usuario
       allowNull: false,
     },
-    roll: {
+    rol: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
@@ -40,7 +37,7 @@ User.init(
   },
   {
     timestamps: false,
-    sequelize : sequelize,
+    sequelize ,
     tableName: "user", 
   }
 );

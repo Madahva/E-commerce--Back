@@ -2,6 +2,7 @@
 import { Sequelize } from "sequelize";
 import { config } from "dotenv";
 import User from "./models/User";
+import { truncate } from "fs";
 
 
 config();
