@@ -9,5 +9,16 @@ export const toLogin = async (email: string) => {
 };
 
 export const toRegister = async (user: any) => {
-  return await User.create(user);
+  const [createdUser, created] = await User.findOrCreate({
+    where: {
+      email: user.email,
+    },
+    defaults: user,
+  });
+
+  if (!created) {
+    throw new Error("User already exists 👀");
+  }
+
+  return createdUser;
 };

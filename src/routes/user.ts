@@ -1,5 +1,4 @@
-import { Response, Request, Router, NextFunction } from "express";
-import { User } from "../models/User";
+import { Router } from "express";
 import {
   getUserByIdHandler,
   toLoginHandler,

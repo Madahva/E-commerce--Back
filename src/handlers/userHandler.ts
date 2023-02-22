@@ -30,9 +30,23 @@ export const toLoginHandler = async (req: Request, res: Response) => {
 };
 
 export const toRegisterHandler = async (req: Request, res: Response) => {
-  const user = req.body;
+  const { name, email, password } = req.body;
+
+  if (
+    !name ||
+    !name.trim() ||
+    !email ||
+    !email.trim() ||
+    !password ||
+    !password.trim()
+  ) {
+    return res
+      .status(400)
+      .json({ error: "name, email und password are required 🤭" });
+  }
+
   try {
-    const userRes = await toRegister(user);
+    const userRes = await toRegister(req.body);
     res.status(200).send(userRes);
   } catch (error: any) {
     res.status(400).json({ error: error.message });
