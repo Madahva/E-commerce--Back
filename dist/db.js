@@ -13,7 +13,7 @@ exports.sequelize = void 0;
 const sequelize_1 = require("sequelize");
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DEPLOY } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_DEPLOY } = process.env;
 // export const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecomerce`,
 //   {
