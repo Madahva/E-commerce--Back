@@ -12,9 +12,8 @@ class Products extends Model {
   public price!: number;
   public deleted?: boolean;
   public rating!: number;
+  public Marca! : string;
   public category! : string;
-
- 
   
 }
 ;
@@ -66,7 +65,7 @@ Products.init(
     Marca :{
       type: DataTypes.STRING,
       allowNull: true ,
-    }
+    },
   },
   {
     sequelize ,
