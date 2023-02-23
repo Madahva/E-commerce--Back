@@ -13,6 +13,7 @@ class Products extends Model {
   public deleted?: boolean;
   public rating!: number;
   public category! : string;
+  public  brow ! : string ;
 
  
   
