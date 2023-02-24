@@ -1,7 +1,5 @@
 node_modules
 .env
 build
-src
 tsconfig.json
-index.ts
 package-lock.json

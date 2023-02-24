@@ -12,10 +12,9 @@ class Products extends Model {
   public price!: number;
   public deleted?: boolean;
   public rating!: number;
-  public category! : string;
-  public  brow ! : string ;
+  public Marca! : string;
+  public category_id! : number;
 
- 
   
 }
 ;
@@ -57,7 +56,7 @@ Products.init(
       defaultValue: 5.0,
     },
     category_id: { // definimos la columna category_id
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       // references: { // establecemos la relación con la tabla Category
       //   model: Category,
@@ -67,7 +66,7 @@ Products.init(
     Marca :{
       type: DataTypes.STRING,
       allowNull: true ,
-    }
+    },
   },
   {
     sequelize ,
@@ -75,8 +74,8 @@ Products.init(
   }
 );
 
-// Category.hasMany(Products);
-// Products.belongsTo(Category);
+Category.hasMany(Products);
+Products.belongsTo(Category);
  
 //  Products.belongsTo(Category);
 export default Products;

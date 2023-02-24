@@ -61,8 +61,8 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             },
         });
         let info = yield transporter.sendMail({
-            from: `"Ecomerce 👾⚒️" <${GMAIL_ADMIN}>`,
-            to: email,
+            from: `${GMAIL_ADMIN}`,
+            to: `${email}`,
             subject: "BIENVENID@ A ECOMERCE",
             html: `Hello ${name}. Thank you very much for joining HIREMY SKILLS 👏. <br></br>We invite you to browse our page and find the ideal purchase.  
            .<br></br>the best shopping site✍️📉 <br></br>

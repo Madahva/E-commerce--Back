@@ -53,8 +53,8 @@ export const newUser = async (req: Request, res: Response): Promise<void> => {
       });
   
       let info = await transporter.sendMail({
-        from: `"Ecomerce 👾⚒️" <${GMAIL_ADMIN}>`,
-        to: email,
+        from: `${GMAIL_ADMIN}`,
+        to: `${email}`,
         subject: "BIENVENID@ A ECOMERCE",
         html: `Hello ${name}. Thank you very much for joining HIREMY SKILLS 👏. <br></br>We invite you to browse our page and find the ideal purchase.  
            .<br></br>the best shopping site✍️📉 <br></br>

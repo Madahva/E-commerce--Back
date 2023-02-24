@@ -1,8 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 // import { AllowNull } from "sequelize-typescript";
 const db_1 = require("../db"); // Importa la instancia de Sequelize
+const category_1 = __importDefault(require("./category"));
 class Products extends sequelize_1.Model {
 }
 ;
@@ -42,7 +46,7 @@ Products.init({
         defaultValue: 5.0,
     },
     category_id: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
         // references: { // establecemos la relación con la tabla Category
         //   model: Category,
@@ -52,12 +56,12 @@ Products.init({
     Marca: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: true,
-    }
+    },
 }, {
     sequelize: db_1.sequelize,
     tableName: "products", // nombre de la tabla en la base de datos
 });
-// Category.hasMany(Products);
-// Products.belongsTo(Category);
+category_1.default.hasMany(Products);
+Products.belongsTo(category_1.default);
 //  Products.belongsTo(Category);
 exports.default = Products;
