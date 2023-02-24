@@ -1,7 +1,14 @@
 import products from "./products"
 import {Router } from "express";
+import User from "./User";
+import category from "./category"
+import filters from "./filters";
+import read from "./read";
 const router = Router();
 
-router.use("/",products);
-
+router.use("/products",products);
+router.use("/User",User)
+router.use("/category",category)
+router.use("/filters",filters)
+router.use("/read",read)
 export default router;

@@ -1,32 +1,23 @@
-import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from "../indexdb";
+import { Model, DataTypes, Sequelize } from "sequelize";
+// import { AllowNull } from "sequelize-typescript";
+import { sequelize } from "../db"; // Importa la instancia de Sequelize
+import Category from "./category";
 
-interface ProductAttributes {
-  id: string;
-  name: string;
-  quantity: number;
-  description?: string;
-  img?: string;
-  price: number;
-}
-
-type ProductCreationAttributes = Optional<ProductAttributes, "id">;
-
-class Product
-  extends Model<ProductAttributes, ProductCreationAttributes>
-  implements ProductAttributes
-{
+class Products extends Model {
   public id!: string;
   public name!: string;
-  public quantity!: number;
+  public quantity?: number;
   public description?: string;
-  public img?: string;
+  public img!: string;
   public price!: number;
-
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public deleted?: boolean;
+  public rating!: number;
+  public Marca! : string;
+  public category_id! : number;
+  
 }
-Product.init(
+;
+Products.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -47,17 +38,43 @@ Product.init(
     },
     img: {
       type: DataTypes.STRING,
+      defaultValue:
+        "https://www.supercoloring.com/sites/default/files/styles/coloring_medium/public/cif/2022/02/521-bust-in-silhouette-coloring-page.png",
     },
     price: {
       type: DataTypes.DECIMAL(6, 2), // hasta un maximo de 9999.99
       allowNull: false,
     },
+    deleted: {
+      //borrado logico
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    rating: {
+      type: DataTypes.DECIMAL(3, 2),
+      defaultValue: 5.0,
+    },
+    category_id: { // definimos la columna category_id
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      // references: { // establecemos la relación con la tabla Category
+      //   model: Category,
+      //   key: 'id'
+      // }
+    },
+    Marca :{
+      type: DataTypes.STRING,
+      allowNull: true ,
+    },
   },
   {
-    sequelize,
-    timestamps: false,
-    modelName: "Product",
+    sequelize ,
+    tableName: "products", // nombre de la tabla en la base de datos
   }
 );
 
-export default Product;
+// Category.hasMany(Products);
+// Products.belongsTo(Category);
+ 
+//  Products.belongsTo(Category);
+export default Products;
