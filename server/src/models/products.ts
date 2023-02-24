@@ -13,7 +13,7 @@ class Products extends Model {
   public deleted?: boolean;
   public rating!: number;
   public Marca! : string;
-  public category! : string;
+  public category_id! : number;
   
 }
 ;
@@ -55,7 +55,7 @@ Products.init(
       defaultValue: 5.0,
     },
     category_id: { // definimos la columna category_id
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       // references: { // establecemos la relación con la tabla Category
       //   model: Category,

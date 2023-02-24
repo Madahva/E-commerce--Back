@@ -33,15 +33,15 @@ import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../db"; // Importa la instancia de Sequelize
 
 class Category extends Model {
-  public id!: string;
+  public id!: number;
   public typecategory!: string;
 }
 
 Category.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
