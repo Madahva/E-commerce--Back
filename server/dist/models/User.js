@@ -31,5 +31,7 @@ User.init({
     timestamps: false,
     sequelize: db_1.sequelize,
     tableName: "user",
+    createdAt: false,
+    updatedAt: false
 });
 exports.default = User;
