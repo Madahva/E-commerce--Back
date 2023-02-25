@@ -39,7 +39,7 @@ export const sequelize = new Sequelize(
 
 (async function seqSync(): Promise<void> {
   try {
-    await sequelize.sync({ force: true }).then(() => {
+    await sequelize.sync({ force: false }).then(() => {
       console.log("Postgres sync has been established successfully.");
     });
   } catch (error) {
