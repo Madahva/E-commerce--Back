@@ -37,20 +37,22 @@ export const filterProductsByBrand = async (req: Request, res: Response): Promis
 }
 
 export const filterProductsByCategory = async (req: Request, res: Response): Promise<void> => {
-    const { category_id} = req.body;
-    console.log(category_id)
-    try {
-        const products = await Products.findAll({
-          where: {
-            category_id: category_id 
-          }
-        });
-      
-        res.status(200).json(products);
-      } catch (error) {
-        res.status(500).json({ error: "Server error" });
-        console.log(error);
+  const { category_id } = req.query;
+  console.log(category_id)
+  try {
+    const products = await Products.findAll({
+      where: {
+        category_id: category_id 
       }
+    });
+
+    console.log(products)
+  
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+    console.log(error);
+  }
 }
 
 export const filterProductsByRating = async (req: Request, res: Response): Promise<void> => {
