@@ -33,8 +33,8 @@ const pago = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
         //mensaje que se envia al mail
         let informacion = yield transporter.sendMail({
-            from: `"Ecomerce 👾⚒️" <${GMAIL_ADMIN}>`,
-            to: email,
+            from: `${GMAIL_ADMIN}`,
+            to: `${email}`,
             subject: "SUCCESSFUL PAYMENT ",
             html: `Hello ${name} 🛒.thank you for shopping with us in a few days your order will arrive👌. <a href='https://ecommerce-pf.vercel.app/'>Enter here to return to the site</a>`, // html body
         });
@@ -61,7 +61,7 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             },
         });
         let info = yield transporter.sendMail({
-            from: `${GMAIL_ADMIN}`,
+            from: `${GMAIL_ADMIN}>`,
             to: `${email}`,
             subject: "BIENVENID@ A ECOMERCE",
             html: `Hello ${name}. Thank you very much for joining HIREMY SKILLS 👏. <br></br>We invite you to browse our page and find the ideal purchase.  

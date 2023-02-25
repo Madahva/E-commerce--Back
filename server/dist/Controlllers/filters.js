@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.filterProductsByRating = exports.filterProductsByCategory = exports.filterProductsByBrand = exports.filterProductsByPrice = void 0;
+exports.filterProductsByName = exports.filterProductsByRating = exports.filterProductsByCategory = exports.filterProductsByBrand = exports.filterProductsByPrice = void 0;
 const products_1 = __importDefault(require("../models/products"));
 const sequelize_1 = require("sequelize");
 const filterProductsByPrice = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -72,7 +72,7 @@ const filterProductsByRating = (req, res) => __awaiter(void 0, void 0, void 0, f
         const products = yield products_1.default.findAll({
             where: {
                 rating: {
-                    [sequelize_1.Op.eq]: rating
+                    [sequelize_1.Op.eq]: String(rating)
                 }
             }
         });
@@ -83,3 +83,20 @@ const filterProductsByRating = (req, res) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.filterProductsByRating = filterProductsByRating;
+const filterProductsByName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { name } = req.query;
+    try {
+        const products = yield products_1.default.findAll({
+            where: {
+                name: {
+                    [sequelize_1.Op.like]: `%${name}%`
+                }
+            }
+        });
+        res.status(200).json(products);
+    }
+    catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+exports.filterProductsByName = filterProductsByName;
