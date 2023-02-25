@@ -54,17 +54,33 @@ export const filterProductsByCategory = async (req: Request, res: Response): Pro
 }
 
 export const filterProductsByRating = async (req: Request, res: Response): Promise<void> => {
-    const {rating} = req.body;
-    try{
+    const { rating} = req.query;
+    try {
         const products = await Products.findAll({
             where: {
-              rating: {
-                [Op.eq]: rating
-              }
+                rating: {
+                    [Op.eq]: rating
+                }
             }
         });
         res.status(200).json(products);
-    }catch(error){
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+export const filterProductsByName = async (req: Request, res: Response): Promise<void> => {
+    const { name } = req.query;
+    try {
+        const products = await Products.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${name}%`
+                }
+            }
+        });
+        res.status(200).json(products);
+    } catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
