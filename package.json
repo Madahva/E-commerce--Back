@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
    "start": "ts-node-dev index.ts",
-    "dev": "concurrently \"tsc -w\" \"nodemon src/index.ts\"",
+    "dev": "concurrently \"tsc -w\" \"nodemon index.ts\"",
     "tc": "tsc",
     "st": "concurrently \"tsc --watch\" \"nodemon index.ts\"",
     "te": "nodemon index.ts",
