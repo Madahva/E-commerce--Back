@@ -40,7 +40,6 @@ import Category from "../models/category";
 
 export const readCategory = async (req: Request, res: Response): Promise<void> => {
 
-    console.log("here4")
     const category = [
         {
             typecategory: "Smartphones"         

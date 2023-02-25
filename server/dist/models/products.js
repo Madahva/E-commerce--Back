@@ -1,8 +1,12 @@
+"use strict";
 // import { Model, DataTypes, Sequelize } from "sequelize";
- //// import { AllowNull } from "sequelize-typescript";
+//// import { AllowNull } from "sequelize-typescript";
 // import { sequelize } from "../db"; // Importa la instancia de Sequelize
 // import Category from "./category";
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 // class Products extends Model {
 //   public id!: string;
 //   public name!: string;
@@ -14,8 +18,6 @@
 //   public rating!: number;
 //   public Marca! : string;
 //   public category_id! : number;
-
-  
 // }
 // ;
 // Products.init(
@@ -73,99 +75,73 @@
 //     tableName: "products", // nombre de la tabla en la base de datos
 //   }
 // );
-
 // // Category.hasMany(Products);
 // // Products.belongsTo(Category);
- 
 // //  Products.belongsTo(Category);
 // export default Products;
-import { Model, DataTypes, Association } from "sequelize";
-import { sequelize } from "../db";
-import Category from "../models/category";
-
-class Product extends Model {
-  public id!: string;
-  public name!: string;
-  public quantity!: number;
-  public description!: string;
-  public img!: string;
-  public price!: string;
-  public deleted!: boolean;
-  public rating!: string;
-  public Marca!: string;
-
-  // Define las propiedades de la relación
-  public readonly Category?: Category;
-
-
-  public static associations: {
-    Category: Association<Product, Category>;
-  };
-
-  // Define la relación con Category
-  public static associate(): void {
-    Product.belongsTo(Category, { foreignKey: "category_id", as: "Category" });
-  }
+const sequelize_1 = require("sequelize");
+const db_1 = require("../db");
+const category_1 = __importDefault(require("../models/category"));
+class Product extends sequelize_1.Model {
+    // Define la relación con Category
+    static associate() {
+        Product.belongsTo(category_1.default, { foreignKey: "category_id", as: "Category" });
+    }
 }
-
-Product.init(
-  {
+Product.init({
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+        type: sequelize_1.DataTypes.UUID,
+        defaultValue: sequelize_1.DataTypes.UUIDV4,
+        primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     quantity: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+        type: sequelize_1.DataTypes.INTEGER,
+        allowNull: false,
     },
     description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+        type: sequelize_1.DataTypes.TEXT,
+        allowNull: false,
     },
     img: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+        type: sequelize_1.DataTypes.TEXT,
+        allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
+        type: sequelize_1.DataTypes.DECIMAL(10, 2),
+        allowNull: false,
     },
     deleted: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
+        type: sequelize_1.DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
     },
     rating: {
-      type: DataTypes.DECIMAL(2, 1),
-      allowNull: false,
-      defaultValue: 0.0,
+        type: sequelize_1.DataTypes.DECIMAL(2, 1),
+        allowNull: false,
+        defaultValue: 0.0,
     },
     Marca: {
-      type: DataTypes.STRING,
-      allowNull: false,
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     category_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Category",
-        key: "id",
-      },
+        type: sequelize_1.DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "Category",
+            key: "id",
+        },
     },
-  },
-  {
-    sequelize,
+}, {
+    sequelize: db_1.sequelize,
     tableName: "products",
     timestamps: true,
     underscored: true,
     createdAt: false,
-    updatedAt : false
-  }
-);
-
-export default Product;
+    updatedAt: false
+});
+exports.default = Product;

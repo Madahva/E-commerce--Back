@@ -27,28 +27,6 @@ export const postuser = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const logicobo = async (req: Request, res: Response): Promise<void> => {
-    const {id} = req.params
-    if (!id) {
-        res.status(400).send("Missing id parameter");
-        return;
-      }
-  try {
-    const borrado = await User.findByPk(id);
-    if (  borrado ===null) {
-      res.status(200).send(`resource with id ${id} not found`);
-    } else if (!borrado.deleted ) {
-      await User.update({ deleted: true }, { where: { id: id } });
-      res.status(200).send(`resource removed  id : ${id}`);
-    } else if (borrado.deleted ) {
-      await User.update({ deleted: false }, { where: { id: id } });
-      res.status(200).send({ message: "User is active" });
-    } 
-  } catch (error) {
-    res.status(500).send(error);
-    console.log(error);
-  }
-};
 
 // {
 //     "email" : "alex.des.d@gmail.com",

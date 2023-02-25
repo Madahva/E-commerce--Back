@@ -39,6 +39,8 @@ User.init(
     timestamps: false,
     sequelize ,
     tableName: "user", 
+    createdAt: false,
+    updatedAt : false
   }
 );
 export default User;
