@@ -1,5 +1,6 @@
 import { Model ,DataTypes } from "sequelize";
 import  {sequelize} from "../db";
+import Product from "./products";
 class User extends Model {
     public id!: string;
     public name!: string;
@@ -14,7 +15,6 @@ User.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-
       allowNull: false,
     },name :{
       type : DataTypes . STRING, 
@@ -23,17 +23,7 @@ User.init(
     email: {
       type: DataTypes.STRING, //  contacto del usuario
       allowNull: false,
-    },
-    rol: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-    deleted: {
-      //borrado logico
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-   
+    }, 
   },
   {
     timestamps: false,
@@ -43,4 +33,7 @@ User.init(
     updatedAt : false
   }
 );
+
+Product.hasMany(User, { foreignKey: 'user_id' });
+ User.belongsTo(Product, { foreignKey: 'user_id' });
 export default User;
