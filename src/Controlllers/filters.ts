@@ -41,25 +41,22 @@ export const filterProductsByBrand = async (
   }
 };
 
-export const filterProductsByCategory = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  const { category_id } = req.body;
-  console.log(category_id);
+export const filterProductsByCategory = async (req: Request, res: Response): Promise<void> => {
+  const { category_id } = req.query;
   try {
     const products = await Products.findAll({
       where: {
-        category_id: category_id,
-      },
+        category_id: category_id 
+      }
     });
-
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
-    console.log(error);
+   
   }
-};
+}
+
+
 
 export const filterProductsByRating = async (
   req: Request,
@@ -114,3 +111,6 @@ export const getBrand = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+
+
