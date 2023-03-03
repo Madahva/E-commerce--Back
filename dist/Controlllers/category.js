@@ -40,7 +40,6 @@ const getcategory = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     catch (error) {
         res.status(500).json({ error: "Server error" });
-        console.log(error);
     }
 });
 exports.getcategory = getcategory;

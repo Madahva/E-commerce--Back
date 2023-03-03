@@ -17,7 +17,7 @@ const shopincard_1 = __importDefault(require("../models/shopincard"));
 const shopicreate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { Name, Img, Price, Amount, Total } = req.body;
     try {
-        console.log(shopincard_1.default, "vida");
+        console.log(shopincard_1.default);
         res.send("aqui estamos por que fue donde nos puso la vida");
     }
     catch (error) {

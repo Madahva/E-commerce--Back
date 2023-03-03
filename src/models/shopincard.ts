@@ -2,35 +2,12 @@ import { Model, DataTypes ,Association } from 'sequelize';
 import { sequelize } from '../db';
 import User from './User';
 
-// interface OrderAttributes {
-//   id?: number;
-//   user_id: number;
-//   products: Product[];
-// }
 
-// interface OrderCreationAttributes {
-//   user_id: number;
-//   products: Product[];
-// }
-
-// interface Product {
-//   productName: string;
-//   productImage: string[];
-//   productPrice: number;
-//   productAmount?: number;
-//   productTotal?: number;
-// }
-
-// class shopincard extends Model {
-//   public id!: number;
-//   public user_id!: number;
-//   public products!: Product[];
-// }
 
 interface ProductData {
-  Name: string;
-  Image: string[];
-  Price: number;
+  Name: string[];
+  Image?: string[];
+  Price?: number;
   Amount?: number;
   Total?: number;
 }

@@ -50,19 +50,17 @@ const filterProductsByBrand = (req, res) => __awaiter(void 0, void 0, void 0, fu
 });
 exports.filterProductsByBrand = filterProductsByBrand;
 const filterProductsByCategory = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { category_id } = req.body;
-    console.log(category_id);
+    const { category_id } = req.query;
     try {
         const products = yield products_1.default.findAll({
             where: {
-                category_id: category_id,
-            },
+                category_id: category_id
+            }
         });
         res.status(200).json(products);
     }
     catch (error) {
         res.status(500).json({ error: "Server error" });
-        console.log(error);
     }
 });
 exports.filterProductsByCategory = filterProductsByCategory;

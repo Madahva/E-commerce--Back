@@ -10,9 +10,9 @@ import {
 const router = Router();
 
 router.get("/price", filterProductsByPrice);
-router.get("/brand", filterProductsByBrand);
+router.get("/brandByName", filterProductsByBrand);
 router.get("/category", filterProductsByCategory);
 router.get("/rating", filterProductsByRating);
 router.get("/name",filterProductsByName);
-router.get("/marca",getBrand)
+router.get("/getAllBrand",getBrand)
 export default router;
