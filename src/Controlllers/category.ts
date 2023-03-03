@@ -27,15 +27,14 @@ export const getcategory = async (
     res.status(200).send(cot);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
-    console.log(error);
   }
 };
 export const getId = async (req: Request, res: Response): Promise<void> => {
-    const {id}= req.params
+  const { id } = req.params;
   try {
-  const inffo = await Category.findByPk(id)
+    const inffo = await Category.findByPk(id);
 
-  res.status(200).send(inffo);
+    res.status(200).send(inffo);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }

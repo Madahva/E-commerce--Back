@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.filterProductsByName = exports.filterProductsByRating = exports.filterProductsByCategory = exports.filterProductsByBrand = exports.filterProductsByPrice = void 0;
+exports.getBrand = exports.filterProductsByName = exports.filterProductsByRating = exports.filterProductsByCategory = exports.filterProductsByBrand = exports.filterProductsByPrice = void 0;
 const products_1 = __importDefault(require("../models/products"));
 const sequelize_1 = require("sequelize");
 const filterProductsByPrice = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -21,9 +21,9 @@ const filterProductsByPrice = (req, res) => __awaiter(void 0, void 0, void 0, fu
         const products = yield products_1.default.findAll({
             where: {
                 price: {
-                    [sequelize_1.Op.between]: [Number(min), Number(max)]
-                }
-            }
+                    [sequelize_1.Op.between]: [Number(min), Number(max)],
+                },
+            },
         });
         res.status(200).json(products);
     }
@@ -38,9 +38,9 @@ const filterProductsByBrand = (req, res) => __awaiter(void 0, void 0, void 0, fu
         const products = yield products_1.default.findAll({
             where: {
                 Marca: {
-                    [sequelize_1.Op.like]: `%${Marca}%`
-                }
-            }
+                    [sequelize_1.Op.like]: `%${Marca}%`,
+                },
+            },
         });
         res.status(200).json(products);
     }
@@ -50,8 +50,7 @@ const filterProductsByBrand = (req, res) => __awaiter(void 0, void 0, void 0, fu
 });
 exports.filterProductsByBrand = filterProductsByBrand;
 const filterProductsByCategory = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { category_id } = req.body;
-    console.log(category_id);
+    const { category_id } = req.query;
     try {
         const products = yield products_1.default.findAll({
             where: {
@@ -62,7 +61,6 @@ const filterProductsByCategory = (req, res) => __awaiter(void 0, void 0, void 0,
     }
     catch (error) {
         res.status(500).json({ error: "Server error" });
-        console.log(error);
     }
 });
 exports.filterProductsByCategory = filterProductsByCategory;
@@ -72,9 +70,9 @@ const filterProductsByRating = (req, res) => __awaiter(void 0, void 0, void 0, f
         const products = yield products_1.default.findAll({
             where: {
                 rating: {
-                    [sequelize_1.Op.eq]: String(rating)
-                }
-            }
+                    [sequelize_1.Op.eq]: String(rating),
+                },
+            },
         });
         res.status(200).json(products);
     }
@@ -89,9 +87,9 @@ const filterProductsByName = (req, res) => __awaiter(void 0, void 0, void 0, fun
         const products = yield products_1.default.findAll({
             where: {
                 name: {
-                    [sequelize_1.Op.like]: `%${name}%`
-                }
-            }
+                    [sequelize_1.Op.like]: `%${name}%`,
+                },
+            },
         });
         res.status(200).json(products);
     }
@@ -100,3 +98,20 @@ const filterProductsByName = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.filterProductsByName = filterProductsByName;
+const getBrand = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const product = yield products_1.default.findAll({
+            attributes: ["Marca"],
+        });
+        if (!product) {
+            res.status(404).json({ error: "Product not found" });
+        }
+        else {
+            res.status(200).json(product);
+        }
+    }
+    catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+exports.getBrand = getBrand;

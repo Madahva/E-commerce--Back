@@ -1,8 +1,7 @@
 
 import { Sequelize } from "sequelize";
 import { config } from "dotenv";
-import User from "./models/User";
-import { truncate } from "fs";
+
 
 
 config();
@@ -17,7 +16,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT , DB_DEPLOY } = process.
 //     native: false,
 //     logging: false,
 //   }
-// );
+//);
 export const sequelize = new Sequelize(
   DB_DEPLOY!,
   {

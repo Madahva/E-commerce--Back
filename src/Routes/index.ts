@@ -5,6 +5,7 @@ import category from "./category"
 import filters from "./filters";
 import email from "./email";
 import  read  from "./read";
+import shopincard from "./shopincard";
 const router = Router();
 
 router.use("/products",products);
@@ -13,5 +14,5 @@ router.use("/category",category)
 router.use("/filters",filters)
 router.use("/email",email)
 router.use("/read",read)
-
+router.use("/shopincard",shopincard)
 export default router;
