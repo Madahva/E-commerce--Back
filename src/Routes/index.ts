@@ -1,17 +1,19 @@
-import products from "./products"
-import {Router } from "express";
+import products from "./products";
+import { Router } from "express";
 import User from "./User";
-import category from "./category"
+import category from "./category";
 import filters from "./filters";
 import email from "./email";
-import  read  from "./read";
+import read from "./read";
+import paymentRouter from "./paymentRouter"
+
 const router = Router();
 
-router.use("/products",products);
-router.use("/User",User)
-router.use("/category",category)
-router.use("/filters",filters)
-router.use("/email",email)
-router.use("/read",read)
-
+router.use("/products", products);
+router.use("/User", User);
+router.use("/category", category);
+router.use("/filters", filters);
+router.use("/email", email);
+router.use("/read", read);
+router.use("/", paymentRouter)
 export default router;
