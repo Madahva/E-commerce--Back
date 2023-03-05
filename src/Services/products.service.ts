@@ -53,6 +53,7 @@ export const readProducts = async (req: Request, res: Response): Promise<void> =
         {
             name: "Samsung Galaxy Note 20 Ultra 5G",
             quantity: 5,
+            deleted: true,
             description: "El último modelo de smartphone de alta gama",
             img: "https://cdn.shopify.com/s/files/1/0271/0922/8578/products/Samsung-galaxy-s20-ultra_18d96eeb-331c-43c7-b338-871d301f5cf5_700x.png?v=1621301850",
             price: 765.89,
