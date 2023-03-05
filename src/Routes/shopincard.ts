@@ -1,9 +1,9 @@
-import { Router} from "express";
-import { shopicreate } from "../Controlllers/shopincard";
-const router = Router();
+// import { Router} from "express";
+// import { shopicreate } from "../Controlllers/shopincard";
+// const router = Router();
 
-router.post("/",shopicreate)
+// router.post("/",shopicreate)
 
 
 
-export default router ;
+// export default router ;
