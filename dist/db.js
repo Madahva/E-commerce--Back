@@ -43,7 +43,7 @@ exports.sequelize = new sequelize_1.Sequelize(`postgres://${DB_USER}:${DB_PASSWO
 (function seqSync() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield exports.sequelize.sync({ force: false }).then(() => {
+            yield exports.sequelize.sync({ force: true }).then(() => {
                 console.log("Postgres sync has been established successfully.");
             });
         }
