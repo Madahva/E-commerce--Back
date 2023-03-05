@@ -9,17 +9,8 @@ config();
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT , DB_DEPLOY } = process.env;
 
-export const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecomerce`,
-  {
-    host: DB_PORT,
-    dialect: "postgres",
-    native: false,
-    logging: false,
-  }
-);
 // export const sequelize = new Sequelize(
-//   DB_DEPLOY!,
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecomerce`,
 //   {
 //     host: DB_PORT,
 //     dialect: "postgres",
@@ -27,6 +18,15 @@ export const sequelize = new Sequelize(
 //     logging: false,
 //   }
 // );
+export const sequelize = new Sequelize(
+  DB_DEPLOY!,
+  {
+    host: DB_PORT,
+    dialect: "postgres",
+    native: false,
+    logging: false,
+  }
+);
 
 (async function authenticate() {
   try {

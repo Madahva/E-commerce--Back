@@ -99,10 +99,8 @@ export const borradologico = async (
   res: Response
 ): Promise<void> => {
   const { id } = req.params;
-  console.log("entre2")
   try {
     const borrado = await Products.findByPk(id);
-    console.log("entre")
     if (borrado === null) {
       res.status(200).send(`resource with id ${id} not found`);
     } else if (!borrado.deleted) {
