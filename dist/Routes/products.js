@@ -7,4 +7,5 @@ router.get("/", products_1.getproduc);
 router.post("/", products_1.postproduct);
 router.delete("/:id", products_1.borradologico);
 router.get("/:id", products_1.getid);
+router.patch("/edit/:id", products_1.patchproduct);
 exports.default = router;

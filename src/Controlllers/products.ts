@@ -7,11 +7,11 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
 
   try {
     if (!name) {
-      const db = await Products.findAll();
+      const db = await Products.findAll({ include: Category });
       const fi = db.filter((dr) => dr.deleted === false);
       res.status(200).send(fi);
     } else {
-      const filterna = await Products.findAll();
+      const filterna = await Products.findAll({ include: Category });
       const filter = filterna.filter(
         (e) => e.name.toLowerCase() === String(name).toLowerCase()
       );
@@ -29,15 +29,18 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
     console.log(error);
   }
 };
+
 export const getid = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
   try {
+    console.log("entre otro")
     const iddb = await Products.findByPk(id);
     res.status(200).json(iddb);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
 };
+
 export const postproduct = async (
   req: Request,
   res: Response
@@ -51,7 +54,7 @@ export const postproduct = async (
     description,
     quantity,
     name,
-    category_id, // cambia el nombre del campo a category_id
+    category_id,
     Marca,
   } = req.body;
 
@@ -65,12 +68,12 @@ export const postproduct = async (
       res.status(400).send({ error: "insert category" });
     } else {
       // Busca la categoría en la base de datos
-      const category = await Category.findOne({ where: { typecategory: category_id } });
+      const category = await Category.findOne({ where: { id: category_id } });
       if (category === null) {
         res.status(400).json({ error: "Category does not exist" });
       } else {
         // Crea el producto con el id de la categoría
-        const newproduc = await Products.create({
+        const newproduct = await Products.create({
           id,
           rating,
           deleted,
@@ -79,7 +82,7 @@ export const postproduct = async (
           description,
           quantity,
           name,
-          category_id: category.id, // agrega el id de la categoría
+          category_id: category.id,
           Marca,
         });
 
@@ -91,7 +94,6 @@ export const postproduct = async (
     console.log(error);
   }
 };
-
 export const borradologico = async (
   req: Request,
   res: Response
@@ -103,14 +105,13 @@ export const borradologico = async (
       res.status(200).send(`resource with id ${id} not found`);
     } else if (!borrado.deleted) {
       await Products.update({ deleted: true }, { where: { id: id } });
-      res.status(200).send(`resource removed  id : ${id}`);
-    } else if (borrado.deleted 
-      ) {
-      await Products.update({ deleted: false }, { where: { id: id } });
-      res.status(200).send({ message: "User is active" });
+      res.status(200).json(`resource removed with id : ${id}`).send(`resource removed with id : ${id}`);
+    } else if (borrado.deleted) {
+      await Products.update({ deleted: true }, { where: { id: id } });
+      res.status(200).json({ message: "resource restored" }).send({ message: "resource restored" });
     }
   } catch (error) {
-    res.send(error);
+    res.status(500).json({ error: "Server error" });
   }
 };
 // {
@@ -123,4 +124,45 @@ export const borradologico = async (
 //    "Marca": "lg",
 //    "category_id": "drone"
    
-// }
+export const patchproduct = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const {
+    rating,
+    deleted,
+    price,
+    img,
+    description,
+    quantity,
+    name,
+    category_id,
+    Marca,
+  } = req.body;
+  try {
+    const product = await Products.findByPk(id);
+    if (!product) {
+      res.status(201).json({ error: "Product not found" });
+    } else {
+      // Busca la categoría en la base de datos
+      const category = await Category.findOne({ where: { id: category_id } });
+      if (category === null) {
+        res.status(202).json({ error: "Category does not exist" });
+      } else {
+        // Actualiza el producto con los datos proporcionados
+        await product.update({
+          rating,
+          deleted,
+          price,
+          img,
+          description,
+          quantity,
+          name,
+          category_id,
+          Marca,
+        });
+        res.status(200).json({ message: "Product updated successfully" });
+      }
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};

@@ -22,8 +22,8 @@ export const pago = async (req : Request, res : Response): Promise<void> =>{
 
     //mensaje que se envia al mail
     let informacion = await transporter.sendMail({
-      from: `"Ecomerce 👾⚒️" <${GMAIL_ADMIN}>`, // sender address
-      to: email, // list of receivers
+      from: `${GMAIL_ADMIN}`, // sender address
+      to:`${email}`, // list of receivers
       subject: "SUCCESSFUL PAYMENT ", // Subject line
       html: `Hello ${name} 🛒.thank you for shopping with us in a few days your order will arrive👌. <a href='https://ecommerce-pf.vercel.app/'>Enter here to return to the site</a>`, // html body
     });
@@ -53,15 +53,14 @@ export const newUser = async (req: Request, res: Response): Promise<void> => {
       });
   
       let info = await transporter.sendMail({
-        from: `"Ecomerce 👾⚒️" <${GMAIL_ADMIN}>`,
-        to: email,
+        from: `${GMAIL_ADMIN}>`,
+        to: `${email}`,
         subject: "BIENVENID@ A ECOMERCE",
         html: `Hello ${name}. Thank you very much for joining HIREMY SKILLS 👏. <br></br>We invite you to browse our page and find the ideal purchase.  
            .<br></br>the best shopping site✍️📉 <br></br>
            <a href='https://ecommerce-pf.vercel.app/'>Enter here to return to the site</a> - <br></br>
           `,
       });
-  
       res.status(200).send(info);
     } catch (error) {
       res.status(402).send(error);
