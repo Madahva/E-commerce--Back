@@ -80,7 +80,7 @@ export const postproduct = async (
           description,
           quantity,
           name,
-          CategoryId: category.id,
+          category_id: category.id,
           Marca,
         });
 

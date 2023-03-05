@@ -45,15 +45,16 @@ import Products from "../models/products";
 
 //   return result;
 // }
+
 export const readProducts = async (req: Request, res: Response): Promise<void> => {
 
     console.log("here4")
     const products = [
         {
-            name: "Smartphones 73829",
+            name: "Samsung Galaxy Note 20 Ultra 5G",
             quantity: 5,
             description: "El último modelo de smartphone de alta gama",
-            img: "https://s03.s3c.es/imag/_v0/770x420/2/6/e/Motorola-One-Black-Laydown-combo-1.png",
+            img: "https://cdn.shopify.com/s/files/1/0271/0922/8578/products/Samsung-galaxy-s20-ultra_18d96eeb-331c-43c7-b338-871d301f5cf5_700x.png?v=1621301850",
             price: 765.89,
             rating: 3,
             Marca: "DELL",
@@ -61,10 +62,10 @@ export const readProducts = async (req: Request, res: Response): Promise<void> =
         },
 
         {
-            name: "Televisions 32381",
+            name: "Smart TV LED 4K UHD",
             quantity: 8,
             description: "Televisor inteligente de última generación",
-            img: "https://s03.s3c.es/imag/_v0/770x420/2/6/e/Motorola-One-Black-Laydown-combo-1.png",
+            img: "https://images.philips.com/is/image/PhilipsConsumer/55PUT6794_57-IMS-es_CO?$jpglarge$&wid=1250",
             price: 1250.75,
             rating: 4,
             Marca: "PHILIPS",
@@ -72,87 +73,87 @@ export const readProducts = async (req: Request, res: Response): Promise<void> =
         },
 
         {
-            name: "Computers 45723",
+            name: "Acer Aspire 3 Intel Celeron",
             quantity: 3,
             description: "Portátil para trabajo y entretenimiento",
-            img: "https://s03.s3c.es/imag/_v0/770x420/2/6/e/Motorola-One-Black-Laydown-combo-1.png",
+            img: "https://liquimarcas.com/wp-content/uploads/2022/08/Portatil-acer-aspire-3-core-i3-A315-34.jpg",
             price: 899.99,
             rating: 5,
-            Marca: "XIAOMI",
+            Marca: "ACER",
             category_id: 3
         },
 
         {
-            name: "Game Consoles 90678",
+            name: "PlayStation 5",
             quantity: 2,
             description: "Consola de videojuegos de última generación",
-            img: "https://www.semana.com/resizer/o3ERhC_Q12hloETcVM_dB-87ejI=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/L7WJ7PYATJG63JNM2A5OOHIEA4.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_627149-MLA44484230438_012021-O.webp",
             price: 599.50,
             rating: 4,
-            Marca: "HUAWEI",
+            Marca: "SONY",
             category_id: 4
         },
 
         {
-            name: "Camaras 65819",
+            name: "BGH EOS R6",
             quantity: 4,
             description: "Cámara fotográfica profesional",
-            img: "https://www.semana.com/resizer/o3ERhC_Q12hloETcVM_dB-87ejI=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/L7WJ7PYATJG63JNM2A5OOHIEA4.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_771755-MLA47093902463_082021-O.webp",
             price: 1599.99,
             rating: 2,
-            Marca: "LG",
+            Marca: "BGH",
             category_id: 5
         },
 
         {
-            name: "Smart Watches 44286",
+            name: "Lenovo Watch Series 7",
             quantity: 6,
             description: "Reloj inteligente de alta calidad",
-            img: "https://mobomx.vteximg.com.br/arquivos/ids/201427/35.png?v=638116545514700000",
+            img: "https://http2.mlstatic.com/D_NQ_NP_854092-MLA51210865767_082022-O.webp",
             price: 399.99,
             rating: 3,
-            Marca: "SAMSUNG",
+            Marca: "Lenovo",
             category_id: 6
         },
 
         {
-            name: "Speakers 55937",
+            name: "Noblex SoundLink Revolve+",
             quantity: 10,
             description: "Altavoces inalámbricos con excelente calidad de sonido",
-            img: "https://mobomx.vteximg.com.br/arquivos/ids/201427/35.png?v=638116545514700000",
+            img: "https://http2.mlstatic.com/D_NQ_NP_694138-MLA53285895231_012023-O.webp",
             price: 299.99,
             rating: 4,
-            Marca: "LOGITECH",
+            Marca: "NOBLEX",
             category_id: 7
         },
 
         {
-            name: "Drones 27790",
+            name: "Electrolux Mavic 2 Pro",
             quantity: 7,
             description: "Drone con cámara HD y control remoto",
-            img: "https://mobomx.vteximg.com.br/arquivos/ids/201427/35.png?v=638116545514700000",
+            img: "https://http2.mlstatic.com/D_NQ_NP_681554-MLA51055415459_082022-O.webp",
             price: 899.50,
             rating: 5,
-            Marca: "NOBLEX",
+            Marca: "ELECTROLUX",
             category_id: 8
         },
 
         {
-            name: "Headphones 16387",
+            name: "Sony WH-1000XM4",
             quantity: 12,
             description: "Auriculares inalámbricos con cancelación de ruido",
-            img: "https://mobomx.vteximg.com.br/arquivos/ids/201427/35.png?v=638116545514700000",
+            img: "https://http2.mlstatic.com/D_NQ_NP_2X_669943-MLA44451841546_012021-F.webp",
             price: 199.99,
             rating: 2,
-            Marca: "NOKIA",
+            Marca: "SONY",
             category_id: 9
         },
 
         {
-            name: "Smartphones 21456",
+            name: "Samsung Galaxy S22 Ultra 5G",
             quantity: 6,
             description: "Smartphone con pantalla OLED y cámara de alta resolución",
-            img: "https://mobomx.vteximg.com.br/arquivos/ids/201427/35.png?v=638116545514700000",
+            img: "https://http2.mlstatic.com/D_NQ_NP_2X_687089-MLA52140335784_102022-F.webp",
             price: 899.99,
             rating: 4,
             Marca: "HP",
@@ -160,21 +161,21 @@ export const readProducts = async (req: Request, res: Response): Promise<void> =
         },
                 
         {
-            name: "Televisions 82375",
+            name: "LG CX OLED TV",
             quantity: 4,
             description: "Televisor 4K con HDR y Smart TV",
-            img: "https://mobomx.vteximg.com.br/arquivos/ids/201427/35.png?v=638116545514700000",
+            img: "https://http2.mlstatic.com/D_NQ_NP_855774-MLA52220683915_102022-O.webp",
             price: 1200.00,
             rating: 5,
-            Marca: "ELECTROLUX",
+            Marca: "LG",
             category_id: 2
         },
                 
         {
-            name: "Computers 97532",
+            name: "ASUS ROG Strix Scar 17",
             quantity: 2,
             description: "Ordenador de sobremesa con procesador potente y gráficos dedicados",
-            img: "https://i.pinimg.com/550x/74/86/5a/74865a124c900055df8d11f00637c86d.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_792906-MLA53016994903_122022-O.webp",
             price: 1499.99,
             rating: 3,
             Marca: "AMD",
@@ -182,54 +183,54 @@ export const readProducts = async (req: Request, res: Response): Promise<void> =
         },
                 
         {
-            name: "Game Consoles 67349",
+            name: "Noblex Switch",
             quantity: 1,
             description: "Consola portátil con pantalla táctil y juegos preinstalados",
-            img: "asdfhttps://i.pinimg.com/550x/74/86/5a/74865a124c900055df8d11f00637c86d.jpgghjkl",
+            img: "https://http2.mlstatic.com/D_NQ_NP_841787-MLA44484414455_012021-O.webp",
             price: 299.50,
             rating: 4,
-            Marca: "BGH",
+            Marca: "NOBLEX",
             category_id: 4
         },
                 
         {
-            name: "Camaras 35546",
+            name: "Nokia Z6 II",
             quantity: 9,
             description: "Cámara deportiva con carcasa resistente al agua y Wi-Fi integrado",
-            img: "https://i.pinimg.com/550x/74/86/5a/74865a124c900055df8d11f00637c86d.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_771755-MLA47093902463_082021-O.webp",
             price: 199.99,
             rating: 4,
-            Marca: "PHILCO",
+            Marca: "NOKIA",
             category_id: 5
         },
                 
         {
-            name: "Smart Watches 74782",
+            name: "Samsung Galaxy Watch4",
             quantity: 3,
             description: "Reloj inteligente con GPS y monitor de frecuencia cardíaca",
-            img: "https://i.pinimg.com/550x/74/86/5a/74865a124c900055df8d11f00637c86d.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_978328-MLA46879861883_072021-O.webp",
             price: 349.99,
             rating: 3,
-            Marca: "DELL",
+            Marca: "SAMSUNG",
             category_id: 6
         },
                 
         {
-            name: "Speakers 12459",
+            name: "Noblex SoundTouch 10",
             quantity: 7,
             description: "Altavoces Bluetooth portátiles con micrófono incorporado",
-            img: "https://i.pinimg.com/550x/74/86/5a/74865a124c900055df8d11f00637c86d.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_937579-MLA40108440454_122019-O.webp",
             price: 99.99,
             rating: 5,
-            Marca: "SONY",
+            Marca: "NOBLEX",
             category_id: 7
         },
                 
         {
-            name: "Drones 96572",
+            name: "Parrot Bebop 2 Power",
             quantity: 5,
             description: "Drone plegable con cámara 4K y control remoto con pantalla",
-            img: "https://i.pinimg.com/550x/74/86/5a/74865a124c900055df8d11f00637c86d.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_681554-MLA51055415459_082022-O.webp",
             price: 1299.00,
             rating: 4,
             Marca: "LENOVO",
@@ -237,15 +238,114 @@ export const readProducts = async (req: Request, res: Response): Promise<void> =
         },
                 
         {
-            name: "Headphones 53761",
+            name: "Sony WH-1000XM4",
             quantity: 8,
             description: "Auriculares inalámbricos con cancelación de ruido y asistente de voz",
-            img: "https://i.pinimg.com/550x/74/86/5a/74865a124c900055df8d11f00637c86d.jpg",
+            img: "https://http2.mlstatic.com/D_NQ_NP_2X_669943-MLA44451841546_012021-F.webp",
             price: 249.99,
             rating: 4,
-            Marca: "HUAWEI",
+            Marca: "SONY",
             category_id: 9
-        }
+        },
+
+        {
+            name: "Huawei Note 20 Ultra 5G",
+            quantity: 5,
+            description: "El último modelo de smartphone de alta gama",
+            img: "https://http2.mlstatic.com/D_NQ_NP_704970-MCO31534366187_072019-O.webp",
+            price: 765.89,
+            rating: 3,
+            Marca: "HUAWEI",
+            category_id: 1
+        },
+
+        {
+            name: "TV HP LED 4K UHD",
+            quantity: 8,
+            description: "Televisor inteligente de última generación",
+            img: "https://image.made-in-china.com/2f0j00QVZWOKSjwyUB/17-19-22-24-26-32-Inch-Plasma-TV-LED-Smart-Televisions-Solar-12V-DC-TV.webp",
+            price: 1250.75,
+            rating: 4,
+            Marca: "HP",
+            category_id: 2
+        },
+
+        {
+            name: "Dell Aspire 3 Celeron",
+            quantity: 3,
+            description: "Portátil para trabajo y entretenimiento",
+            img: "https://www.apcomputadores.com/wp-content/uploads/portatil-dell-vostro-yg53w-vostro-3405-14%E2%80%B3-amd-ryzen-5-3450u-8gb-ram-256gb-ssd.jpg.webp",
+            price: 899.99,
+            rating: 5,
+            Marca: "DELL",
+            category_id: 3
+        },
+
+        {
+            name: "PlayStation 4",
+            quantity: 2,
+            description: "Consola de videojuegos de última generación",
+            img: "https://http2.mlstatic.com/D_NQ_NP_2X_798586-MLA40076060236_122019-V.webp",
+            price: 599.50,
+            rating: 4,
+            Marca: "SONY",
+            category_id: 4
+        },
+
+        {
+            name: "BGH EOS R6",
+            quantity: 4,
+            description: "Cámara fotográfica profesional",
+            img: "https://http2.mlstatic.com/D_NQ_NP_771755-MLA47093902463_082021-O.webp",
+            price: 1599.99,
+            rating: 2,
+            Marca: "BGH",
+            category_id: 5
+        },
+
+        {
+            name: "Watch Master 7",
+            quantity: 6,
+            description: "Reloj inteligente de alta calidad",
+            img: "https://teranautas.es/wp-content/uploads/Apple-lanza-watchOS-87-para-Apple-Watch.webp.webp",
+            price: 399.99,
+            rating: 3,
+            Marca: "Lenovo",
+            category_id: 6
+        },
+
+        {
+            name: "SoundLink Revolve+ 630",
+            quantity: 10,
+            description: "Altavoces inalámbricos con excelente calidad de sonido",
+            img: "https://www.popsci.com/uploads/2021/11/12/fluance-ai41-best-speakers.jpg?auto=webp",
+            price: 299.99,
+            rating: 4,
+            Marca: "NOBLEX",
+            category_id: 7
+        },
+
+        {
+            name: "Logitech Mavic 7 Pro",
+            quantity: 7,
+            description: "Drone con cámara HD y control remoto",
+            img: "https://http2.mlstatic.com/D_NQ_NP_2X_877421-MLA51321901732_082022-V.webp",
+            price: 899.50,
+            rating: 5,
+            Marca: "LOGITECH",
+            category_id: 8
+        },
+
+        {
+            name: "Sony PT-1070XM4",
+            quantity: 12,
+            description: "Auriculares inalámbricos con cancelación de ruido",
+            img: "https://www.apcomputadores.com/wp-content/uploads/2020/08/stingerps4-1.jpg.webp",
+            price: 199.99,
+            rating: 2,
+            Marca: "SONY",
+            category_id: 9
+        },
 
     ];
 
