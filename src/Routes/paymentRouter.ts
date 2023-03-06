@@ -5,7 +5,7 @@ import PaymentController from "../Controlllers/paymentController"
 import PaymentService from "../Services/paymentService";
 const PaymentInstance = new PaymentController(new PaymentService());
 
-router.post("/payment", function (req: Request, res: Response) {
+router.get("/payment", function (req: Request, res: Response) {
   PaymentInstance.getPaymentLink(req, res);
 });
 
