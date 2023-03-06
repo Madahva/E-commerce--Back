@@ -19,12 +19,13 @@ const items = [
 ];
 
 class PaymentService {
-  async createPayment() {
+  async createPayment(data:any) {
+    console.log(data)
     const url = "https://api.mercadopago.com/checkout/preferences";
 
     const body = {
       payer_email: "${process.env.PAYER_EMAIL} ",
-      items ,
+      items: data,
       back_urls: {
         failure: "/failure",
         pending: "/pending",
