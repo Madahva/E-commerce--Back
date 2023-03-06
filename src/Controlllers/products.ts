@@ -32,6 +32,7 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
 export const getid = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
   try {
+    console.log("entre otro")
     const iddb = await Products.findByPk(id);
     res.status(200).json(iddb);
   } catch (error) {
@@ -102,13 +103,13 @@ export const borradologico = async (
       res.status(200).send(`resource with id ${id} not found`);
     } else if (!borrado.deleted) {
       await Products.update({ deleted: true }, { where: { id: id } });
-      res.status(200).send(`resource removed  id : ${id}`);
+      res.status(200).json(`resource removed with id : ${id}`).send(`resource removed with id : ${id}`);
     } else if (borrado.deleted) {
-      await Products.update({ deleted: false }, { where: { id: id } });
-      res.status(200).send({ message: "User is active" });
+      await Products.update({ deleted: true }, { where: { id: id } });
+      res.status(200).json({ message: "resource restored" }).send({ message: "resource restored" });
     }
   } catch (error) {
-    res.send(error);
+    res.status(500).json({ error: "Server error" });
   }
 };
 
@@ -164,5 +165,46 @@ export const patchpro = async (req: Request, res: Response): Promise<void> => {
 //    "rating" : 4,
 //    "Marca": "lg",
 //    "category_id": "drone"
-
-// }
+   
+export const patchproduct = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const {
+    rating,
+    deleted,
+    price,
+    img,
+    description,
+    quantity,
+    name,
+    category_id,
+    Marca,
+  } = req.body;
+  try {
+    const product = await Products.findByPk(id);
+    if (!product) {
+      res.status(201).json({ error: "Product not found" });
+    } else {
+      // Busca la categoría en la base de datos
+      const category = await Category.findOne({ where: { id: category_id } });
+      if (category === null) {
+        res.status(202).json({ error: "Category does not exist" });
+      } else {
+        // Actualiza el producto con los datos proporcionados
+        await product.update({
+          rating,
+          deleted,
+          price,
+          img,
+          description,
+          quantity,
+          name,
+          category_id,
+          Marca,
+        });
+        res.status(200).json({ message: "Product updated successfully" });
+      }
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};

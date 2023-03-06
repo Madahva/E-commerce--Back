@@ -34,6 +34,6 @@ User.init(
   }
 );
 
-Product.hasMany(User, { foreignKey: 'user_id' });
- User.belongsTo(Product, { foreignKey: 'user_id' });
+// Product.hasMany(User, { foreignKey: 'user_id' });
+//  User.belongsTo(Product, { foreignKey: 'user_id' });
 export default User;
