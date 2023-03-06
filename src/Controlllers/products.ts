@@ -26,7 +26,6 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
     }
   } catch (error) {
     res.status(402).send(error);
-    console.log(error);
   }
 };
 
@@ -91,7 +90,6 @@ export const postproduct = async (
     }
   } catch (error) {
     res.status(500).json({ error: "Server error" });
-    console.log(error);
   }
 };
 export const borradologico = async (
@@ -114,6 +112,50 @@ export const borradologico = async (
     res.status(500).json({ error: "Server error" });
   }
 };
+
+export const patchpro = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const {
+    rating,
+    deleted,
+    price,
+    img,
+    description,
+    quantity,
+    name,
+    category_id,
+    Marca,
+  } = req.body;
+  try {
+    const product = await Products.findByPk(id);
+    if (!product) {
+      res.status(201).json({ error: "Product not found" });
+    } else {
+      // Busca la categoría en la base de datos
+      const category = await Category.findOne({ where: { id: category_id } });
+      if (category === null) {
+        res.status(202).json({ error: "Category does not exist" });
+      } else {
+        // Actualiza el producto con los datos proporcionados
+        await product.update({
+          rating,
+          deleted,
+          price,
+          img,
+          description,
+          quantity,
+          name,
+          category_id,
+          Marca,
+        });
+        res.status(200).json({ message: "Product updated successfully" });
+      }
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 // {
 //   "name" : "drone 55l",
 //   "quantity" :  5 ,
