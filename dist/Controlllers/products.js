@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.patchpro = exports.borradologico = exports.postproduct = exports.getid = exports.getproduc = void 0;
+exports.patchproduct = exports.borradologico = exports.postproduct = exports.getid = exports.getproduc = void 0;
 const category_1 = __importDefault(require("../models/category"));
 const products_1 = __importDefault(require("../models/products"));
 const getproduc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -46,6 +46,7 @@ exports.getproduc = getproduc;
 const getid = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
+        console.log("entre otro");
         const iddb = yield products_1.default.findByPk(id);
         res.status(200).json(iddb);
     }
@@ -84,7 +85,7 @@ const postproduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     description,
                     quantity,
                     name,
-                    CategoryId: category.id,
+                    category_id: category.id,
                     Marca,
                 });
                 res.status(201).json({ message: "Product created successfully" });
@@ -98,26 +99,26 @@ const postproduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.postproduct = postproduct;
 const borradologico = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    try {
-        const borrado = yield products_1.default.findByPk(id);
-        if (borrado === null) {
-            res.status(200).send(`resource with id ${id} not found`);
-        }
-        else if (!borrado.deleted) {
-            yield products_1.default.update({ deleted: true }, { where: { id: id } });
-            res.status(200).send(`resource removed  id : ${id}`);
-        }
-        else if (borrado.deleted) {
-            yield products_1.default.update({ deleted: false }, { where: { id: id } });
-            res.status(200).send({ message: "User is active" });
-        }
-    }
-    catch (error) {
-        res.send(error);
-    }
+    yield products_1.default.update({
+        deleted: true,
+    }, {
+        where: {
+            id,
+        },
+    });
+    res.status(201).json({ message: "Product deleted successfully" });
 });
 exports.borradologico = borradologico;
-const patchpro = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// {
+//   "name" : "drone 55l",
+//   "quantity" :  5 ,
+//    "description": "el producto de novedad",
+//    "img" : "bjnojnjdob",
+//    "price" : 759,
+//    "rating" : 4,
+//    "Marca": "lg",
+//    "category_id": "drone"
+const patchproduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { rating, deleted, price, img, description, quantity, name, category_id, Marca, } = req.body;
     try {
@@ -152,14 +153,4 @@ const patchpro = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).json({ error: "Server error" });
     }
 });
-exports.patchpro = patchpro;
-// {
-//   "name" : "drone 55l",
-//   "quantity" :  5 ,
-//    "description": "el producto de novedad",
-//    "img" : "bjnojnjdob",
-//    "price" : 759,
-//    "rating" : 4,
-//    "Marca": "lg",
-//    "category_id": "drone"
-// }
+exports.patchproduct = patchproduct;
