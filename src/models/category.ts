@@ -1,6 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../db"; // Importa la instancia de Sequelize
-import Products from "./products";
+import Product from "./products";
 
 class Category extends Model {
   public id!: number;
@@ -18,18 +18,17 @@ Category.init(
     typecategory: {
       type: DataTypes.STRING,
       allowNull: false,
-      
     },
   },
   {
     sequelize,
     tableName: "Category", // nombre de la tabla en la base de datos
     createdAt: false,
-    updatedAt : false
+    updatedAt: false,
   }
 );
 
-Category.hasMany(Products, { foreignKey: 'category_id' });
- Products.belongsTo(Category, { foreignKey: 'category_id' });
+// Category.hasMany(Product, { foreignKey: "category_id" });
+// Product.belongsTo(Category, { foreignKey: "category_id" });
 
 export default Category;

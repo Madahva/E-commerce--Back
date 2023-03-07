@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import Brand from "../models/Brand";
 import Category from "../models/category";
 import Products from "../models/products";
 
@@ -11,14 +12,14 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
       const fi = db.filter((dr) => dr.deleted === false);
       res.status(200).send(fi);
     } else {
-      const filterna = await Products.findAll({ include: Category });
+      const filterna = await Products.findAll({ include: Category},);
       const filter = filterna.filter(
         (e) => e.name.toLowerCase() === String(name).toLowerCase()
       );
       if (filter.length === 0) {
         res.status(404).json({ message: "product not found" });
       } else if (filter[0].deleted === true) {
-        console.log(filter[0]);
+      
         res.status(404).json({ message: "removed product" });
       } else {
         res.status(200).json(filter);
@@ -32,7 +33,7 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
 export const getid = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
   try {
-    console.log("entre otro")
+   
     const iddb = await Products.findByPk(id);
     res.status(200).json(iddb);
   } catch (error) {
@@ -65,11 +66,17 @@ export const postproduct = async (
       res.status(400).send({ error: "insert information" });
     } else if (!category_id) {
       res.status(400).send({ error: "insert category" });
-    } else {
-      // Busca la categoría en la base de datos
+    } else if (!Marca) {
+      res.status(400).send({ error: "insert Marca" });
+    }else {
+      // Busca la categoría y la marca en la base de datos
       const category = await Category.findOne({ where: { id: category_id } });
+      const brandg = await Brand.findOne({ where: { brand: Marca } });
+      
       if (category === null) {
         res.status(400).json({ error: "Category does not exist" });
+      } else if (brandg === null) {
+        res.status(400).json({ error: "Brand does not exist" });
       } else {
         // Crea el producto con el id de la categoría
         const newproduct = await Products.create({
@@ -103,10 +110,16 @@ export const borradologico = async (
       res.status(200).send(`resource with id ${id} not found`);
     } else if (!borrado.deleted) {
       await Products.update({ deleted: true }, { where: { id: id } });
-      res.status(200).json(`resource removed with id : ${id}`).send(`resource removed with id : ${id}`);
+      res
+        .status(200)
+        .json(`resource removed with id : ${id}`)
+        .send(`resource removed with id : ${id}`);
     } else if (borrado.deleted) {
       await Products.update({ deleted: true }, { where: { id: id } });
-      res.status(200).json({ message: "resource restored" }).send({ message: "resource restored" });
+      res
+        .status(200)
+        .json({ message: "resource restored" })
+        .send({ message: "resource restored" });
     }
   } catch (error) {
     res.status(500).json({ error: "Server error" });
@@ -165,8 +178,11 @@ export const patchpro = async (req: Request, res: Response): Promise<void> => {
 //    "rating" : 4,
 //    "Marca": "lg",
 //    "category_id": "drone"
-   
-export const patchproduct = async (req: Request, res: Response): Promise<void> => {
+
+export const patchproduct = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const { id } = req.params;
   const {
     rating,
