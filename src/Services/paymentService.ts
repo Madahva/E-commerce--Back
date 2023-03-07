@@ -1,35 +1,16 @@
 import axios from "axios";
 
-const items = [
-  {
-    title: "Point Mini",
-    quantity: 1,
-    unit_price: 10,
-  },
-  {
-    title: "Point Mini",
-    quantity: 1,
-    unit_price: 10,
-  },
-  {
-    title: "Point Mini2",
-    quantity: 2,
-    unit_price: 10,
-  },
-];
-
 class PaymentService {
   async createPayment(data:any) {
-    console.log(data)
     const url = "https://api.mercadopago.com/checkout/preferences";
 
     const body = {
       payer_email: "${process.env.PAYER_EMAIL} ",
       items: data,
       back_urls: {
-        failure: "/failure",
-        pending: "/pending",
-        success: "/success",
+        failure: "/https://ecommerce--pf.vercel.app/",
+        pending: "/https://ecommerce--pf.vercel.app/",
+        success: "/https://ecommerce--pf.vercel.app/",
       },
     };
 
