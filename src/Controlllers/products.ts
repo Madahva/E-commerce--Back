@@ -26,7 +26,6 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
     }
   } catch (error) {
     res.status(402).send(error);
-    console.log(error);
   }
 };
 
@@ -91,7 +90,6 @@ export const postproduct = async (
     }
   } catch (error) {
     res.status(500).json({ error: "Server error" });
-    console.log(error);
   }
 };
 
@@ -112,6 +110,7 @@ export const borradologico = async (
   );
   res.status(201).json({ message: "Product deleted successfully" })
 };
+
 // {
 //   "name" : "drone 55l",
 //   "quantity" :  5 ,
