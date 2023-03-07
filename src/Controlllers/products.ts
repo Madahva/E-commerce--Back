@@ -94,43 +94,25 @@ export const postproduct = async (
     console.log(error);
   }
 };
-// export const borradologico = async (
-//   req: Request,
-//   res: Response
-// ): Promise<void> => {
-//   const { id } = req.params;
-//   try {
-//     const borrado = await Products.findByPk(id);
-//     if (borrado === null) {
-//       res.status(200).send(`resource with id ${id} not found`);
-//     } else if (!borrado.deleted) {
-//       await Products.update({ deleted: true }, { where: { id: id } });
-//       res.status(200).json(`resource removed with id : ${id}`).send(`resource removed with id : ${id}`);
-//     } else if (borrado.deleted) {
-//       await Products.update({ deleted: true }, { where: { id: id } });
-//       res.status(200).json({ message: "resource restored" }).send({ message: "resource restored" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: "Server error" });
-//   }
-// };
-
 export const borradologico = async (
   req: Request,
   res: Response
 ): Promise<void> => {
   const { id } = req.params;
-  await Products.update(
-    {
-      deleted: true,
-    },
-    {
-      where: {
-        id,
-      },
+  try {
+    const borrado = await Products.findByPk(id);
+    if (borrado === null) {
+      res.status(200).send(`resource with id ${id} not found`);
+    } else if (!borrado.deleted) {
+      await Products.update({ deleted: true }, { where: { id: id } });
+      res.status(200).json(`resource removed with id : ${id}`).send(`resource removed with id : ${id}`);
+    } else if (borrado.deleted) {
+      await Products.update({ deleted: true }, { where: { id: id } });
+      res.status(200).json({ message: "resource restored" }).send({ message: "resource restored" });
     }
-  );
-  res.status(201).json({ message: "Product deleted successfully" })
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
 };
 // {
 //   "name" : "drone 55l",
