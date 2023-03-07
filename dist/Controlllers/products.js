@@ -99,26 +99,6 @@ const postproduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.postproduct = postproduct;
-// export const borradologico = async (
-//   req: Request,
-//   res: Response
-// ): Promise<void> => {
-//   const { id } = req.params;
-//   try {
-//     const borrado = await Products.findByPk(id);
-//     if (borrado === null) {
-//       res.status(200).send(`resource with id ${id} not found`);
-//     } else if (!borrado.deleted) {
-//       await Products.update({ deleted: true }, { where: { id: id } });
-//       res.status(200).json(`resource removed with id : ${id}`).send(`resource removed with id : ${id}`);
-//     } else if (borrado.deleted) {
-//       await Products.update({ deleted: true }, { where: { id: id } });
-//       res.status(200).json({ message: "resource restored" }).send({ message: "resource restored" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: "Server error" });
-//   }
-// };
 const borradologico = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     yield products_1.default.update({
