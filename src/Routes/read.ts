@@ -6,6 +6,6 @@ import { readProducts} from "../Services/products.service";
 
 router.get("/category",readCategory)
 router.get("/products",readProducts)
-router.get("/bread",readbrand)
+router.get("/brands",readbrand)
 
 export default router
