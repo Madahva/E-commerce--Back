@@ -6,7 +6,7 @@ const express_1 = require("express");
 const router = (0, express_1.Router)();
 router.get("/", products_1.getproduc);
 router.post("/", produc2_1.postproduct);
-router.delete("/:id", products_1.borradologico);
+router.patch("/:id", products_1.borradologico);
 router.get("/:id", products_1.getid);
 router.patch("/edit/:id", produc2_1.patchproduct);
 exports.default = router;

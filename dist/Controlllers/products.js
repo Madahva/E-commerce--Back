@@ -20,8 +20,8 @@ const getproduc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!name) {
             const db = yield products_1.default.findAll({ include: category_1.default });
-            const fi = db.filter((dr) => dr.deleted === false);
-            res.status(200).send(fi);
+            // const fi = db.filter((dr) => dr.deleted === false);
+            res.status(200).send(db);
         }
         else {
             const filterna = yield products_1.default.findAll({ include: category_1.default });

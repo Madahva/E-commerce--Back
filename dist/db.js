@@ -14,8 +14,14 @@ const sequelize_1 = require("sequelize");
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_DEPLOY } = process.env;
+exports.sequelize = new sequelize_1.Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecomerce`, {
+    host: DB_PORT,
+    dialect: "postgres",
+    native: false,
+    logging: false,
+});
 // export const sequelize = new Sequelize(
-//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecomerce`,
+//   DB_DEPLOY!,
 //   {
 //     host: DB_PORT,
 //     dialect: "postgres",
@@ -23,12 +29,6 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_DEPLOY } = process.e
 //     logging: false,
 //   }
 // );
-exports.sequelize = new sequelize_1.Sequelize(DB_DEPLOY, {
-    host: DB_PORT,
-    dialect: "postgres",
-    native: false,
-    logging: false,
-});
 (function authenticate() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

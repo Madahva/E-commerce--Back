@@ -8,6 +8,7 @@ config();
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT , DB_DEPLOY } = process.env;
 
+
 // export const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecomerce`,
 //   {

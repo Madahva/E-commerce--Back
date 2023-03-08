@@ -13,23 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
-const items = [
-    {
-        title: "Point Mini",
-        quantity: 1,
-        unit_price: 10,
-    },
-    {
-        title: "Point Mini",
-        quantity: 1,
-        unit_price: 10,
-    },
-    {
-        title: "Point Mini2",
-        quantity: 2,
-        unit_price: 10,
-    },
-];
 class PaymentService {
     createPayment(data) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -38,9 +21,9 @@ class PaymentService {
                 payer_email: "${process.env.PAYER_EMAIL} ",
                 items: data,
                 back_urls: {
-                    failure: "/failure",
-                    pending: "/pending",
-                    success: "/success",
+                    failure: "/ecommerce--pf.vercel.app/",
+                    pending: "/ecommerce--pf.vercel.app/",
+                    success: "/ecommerce--pf.vercel.app/",
                 },
             };
             const payment = yield axios_1.default.post(url, body, {
