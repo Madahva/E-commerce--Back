@@ -59,7 +59,7 @@ export const readProducts = async (
       img: "https://cdn.shopify.com/s/files/1/0271/0922/8578/products/Samsung-galaxy-s20-ultra_18d96eeb-331c-43c7-b338-871d301f5cf5_700x.png?v=1621301850",
       price: 765.89,
       rating: 3,
-      Marca: 1,
+      Marca: 14,
       category_id: 1,
     },
 
@@ -81,7 +81,7 @@ export const readProducts = async (
       img: "https://liquimarcas.com/wp-content/uploads/2022/08/Portatil-acer-aspire-3-core-i3-A315-34.jpg",
       price: 899.99,
       rating: 5,
-      Marca: 3,
+      Marca: 1,
       category_id: 3,
     },
 
@@ -103,7 +103,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_771755-MLA47093902463_082021-O.webp",
       price: 1599.99,
       rating: 2,
-      Marca:5,
+      Marca:2,
       category_id: 5,
     },
 
@@ -114,7 +114,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_854092-MLA51210865767_082022-O.webp",
       price: 399.99,
       rating: 3,
-      Marca: 6,
+      Marca: 7,
       category_id: 6,
     },
 
@@ -125,7 +125,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_694138-MLA53285895231_012023-O.webp",
       price: 299.99,
       rating: 4,
-      Marca:7,
+      Marca:10,
       category_id: 7,
     },
 
@@ -136,7 +136,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_681554-MLA51055415459_082022-O.webp",
       price: 899.5,
       rating: 5,
-      Marca: 8,
+      Marca: 4,
       category_id: 8,
     },
 
@@ -144,10 +144,10 @@ export const readProducts = async (
       name: "Sony WH-1000XM4",
       quantity: 12,
       description: "Auriculares inalámbricos con cancelación de ruido",
-      img: "https://http2.mlstatic.com/D_NQ_NP_2X_669943-MLA44451841546_012021-F.webp",
+      img: "https://cleeraudio.com/wp-content/uploads/2021/10/ALPHA-ST-Gallery-Image-2.webp",
       price: 199.99,
       rating: 2,
-      Marca: 9,
+      Marca: 15,
       category_id: 9,
     },
 
@@ -158,7 +158,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_2X_687089-MLA52140335784_102022-F.webp",
       price: 899.99,
       rating: 4,
-      Marca: 1,
+      Marca: 14,
       category_id: 1,
     },
 
@@ -169,7 +169,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_855774-MLA52220683915_102022-O.webp",
       price: 1200.0,
       rating: 5,
-      Marca: 2,
+      Marca: 8,
       category_id: 2,
     },
 
@@ -181,7 +181,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_792906-MLA53016994903_122022-O.webp",
       price: 1499.99,
       rating: 3,
-      Marca: 3,
+      Marca: 1,
       category_id: 3,
     },
 
@@ -193,7 +193,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_841787-MLA44484414455_012021-O.webp",
       price: 299.5,
       rating: 4,
-      Marca: 4,
+      Marca: 10,
       category_id: 4,
     },
 
@@ -205,7 +205,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_771755-MLA47093902463_082021-O.webp",
       price: 199.99,
       rating: 4,
-      Marca: 5,
+      Marca: 11,
       category_id: 5,
     },
 
@@ -216,7 +216,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_978328-MLA46879861883_072021-O.webp",
       price: 349.99,
       rating: 3,
-      Marca: 6,
+      Marca: 14,
       category_id: 6,
     },
 
@@ -224,10 +224,10 @@ export const readProducts = async (
       name: "Noblex SoundTouch 10",
       quantity: 7,
       description: "Altavoces Bluetooth portátiles con micrófono incorporado",
-      img: "https://http2.mlstatic.com/D_NQ_NP_937579-MLA40108440454_122019-O.webp",
+      img: "https://image.made-in-china.com/2f0j00SiIWVlKCfFGL/Gadgets-2022-Innovative-Mini-LED-Bluetooth-Speaker-CE-FCC-RoHS-Wireless-Speaker-Ipx7-Waterproof-Bluetooth-Shower-Speaker.webp",
       price: 99.99,
       rating: 5,
-      Marca: 7,
+      Marca: 10,
       category_id: 7,
     },
 
@@ -235,7 +235,7 @@ export const readProducts = async (
       name: "Parrot Bebop 2 Power",
       quantity: 5,
       description: "Drone plegable con cámara 4K y control remoto con pantalla",
-      img: "https://http2.mlstatic.com/D_NQ_NP_681554-MLA51055415459_082022-O.webp",
+      img: "https://http2.mlstatic.com/D_NQ_NP_2X_877421-MLA51321901732_082022-V.webp",
       price: 1299.0,
       rating: 4,
       Marca: 8,
@@ -243,14 +243,14 @@ export const readProducts = async (
     },
 
     {
-      name: "nokia WH-1000XM4",
+      name: "Nokia WH-1000XM4",
       quantity: 8,
       description:
         "Auriculares inalámbricos con cancelación de ruido y asistente de voz",
-      img: "https://http2.mlstatic.com/D_NQ_NP_2X_669943-MLA44451841546_012021-F.webp",
+      img: "https://cdn.trendhunterstatic.com/phpthumbnails/290/290418/290418_1_800.jpeg?auto=webp",
       price: 249.99,
       rating: 4,
-      Marca: 9,
+      Marca: 11,
       category_id: 9,
     },
 
@@ -261,7 +261,7 @@ export const readProducts = async (
       img: "https://http2.mlstatic.com/D_NQ_NP_704970-MCO31534366187_072019-O.webp",
       price: 765.89,
       rating: 3,
-      Marca:1,
+      Marca:6,
       category_id: 1,
     },
 
@@ -349,7 +349,7 @@ export const readProducts = async (
       img: "https://www.apcomputadores.com/wp-content/uploads/2020/08/stingerps4-1.jpg.webp",
       price: 199.99,
       rating: 2,
-      Marca: 8,
+      Marca: 15,
       category_id: 9,
     },
   ];
