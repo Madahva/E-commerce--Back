@@ -5,7 +5,7 @@ import {
   filterProductsByCategory,
   filterProductsByRating,
   filterProductsByName,
-  getBrand
+ 
 } from "../Controlllers/filters";
 const router = Router();
 
@@ -14,5 +14,5 @@ router.get("/brandByName", filterProductsByBrand);
 router.get("/category", filterProductsByCategory);
 router.get("/rating", filterProductsByRating);
 router.get("/name",filterProductsByName);
-router.get("/getAllBrand",getBrand)
+
 export default router;

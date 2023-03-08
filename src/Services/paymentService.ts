@@ -2,7 +2,7 @@ import axios from "axios";
 
 class PaymentService {
   async createPayment(data:any) {
-    console.log(data)
+    
     const url = "https://api.mercadopago.com/checkout/preferences";
 
     const body = {
