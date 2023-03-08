@@ -1,4 +1,5 @@
-import { getproduc ,postproduct,borradologico,getid, patchproduct} from "../Controlllers/products";
+import { getproduc,borradologico,getid} from "../Controlllers/products";
+import {postproduct , patchproduct} from "../Controlllers/produc2"
 import { Router} from "express";
 const router = Router();
 

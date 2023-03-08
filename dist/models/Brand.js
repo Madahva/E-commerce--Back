@@ -1,26 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const db_1 = require("../db"); // Importa la instancia de Sequelize
-class Category extends sequelize_1.Model {
+const db_1 = require("../db");
+class Brand extends sequelize_1.Model {
 }
-Category.init({
+Brand.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
     },
-    typecategory: {
+    brand: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
+    img: {
+        type: sequelize_1.DataTypes.TEXT,
         allowNull: false,
     },
 }, {
     sequelize: db_1.sequelize,
-    tableName: "Category",
+    tableName: "Brand",
     createdAt: false,
     updatedAt: false,
 });
-// Category.hasMany(Product, { foreignKey: "category_id" });
-// Product.belongsTo(Category, { foreignKey: "category_id" });
-exports.default = Category;
+// Brand.hasMany(Product, { foreignKey: "brand" });
+// Product.belongsTo(Brand, { foreignKey: "brand" });
+exports.default = Brand;
