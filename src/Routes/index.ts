@@ -5,7 +5,7 @@ import category from "./category";
 import filters from "./filters";
 import email from "./email";
 import read from "./read";
-import paymentRouter from "./paymentRouter"
+import paymentRouter from "./paymentRouter";
 
 const router = Router();
 
@@ -15,5 +15,6 @@ router.use("/category", category);
 router.use("/filters", filters);
 router.use("/email", email);
 router.use("/read", read);
-router.use("/", paymentRouter)
+router.use("/", paymentRouter);
+
 export default router;
