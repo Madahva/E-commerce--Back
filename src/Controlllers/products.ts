@@ -9,8 +9,8 @@ export const getproduc = async (req: Request, res: Response): Promise<void> => {
   try {
     if (!name) {
       const db = await Products.findAll({ include: Category });
-      const fi = db.filter((dr) => dr.deleted === false);
-      res.status(200).send(fi);
+      // const fi = db.filter((dr) => dr.deleted === false);
+      res.status(200).send(db);
     } else {
       const filterna = await Products.findAll({ include: Category},);
       const filter = filterna.filter(

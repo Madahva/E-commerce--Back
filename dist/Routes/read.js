@@ -7,5 +7,5 @@ const categories_service_1 = require("../Services/categories.service");
 const products_service_1 = require("../Services/products.service");
 router.get("/category", categories_service_1.readCategory);
 router.get("/products", products_service_1.readProducts);
-router.get("/bread", breadservices_1.readbrand);
+router.get("/brands", breadservices_1.readbrand);
 exports.default = router;

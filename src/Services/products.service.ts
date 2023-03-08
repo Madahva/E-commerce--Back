@@ -302,7 +302,7 @@ export const readProducts = async (
       name: "BGH EOS R6",
       quantity: 4,
       description: "Cámara fotográfica profesional",
-      img: "https://http2.mlstatic.com/D_NQ_NP_771755-MLA47093902463_082021-O.webp",
+      img: "https://tauretcomputadores.com/images/products/Product_202211051311561079377120.BRIO-500-5.webp",
       price: 1599.99,
       rating: 2,
       Marca: 2,
