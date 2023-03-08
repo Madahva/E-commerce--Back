@@ -1,23 +1,5 @@
 import axios from "axios";
 
-const items = [
-  {
-    title: "Point Mini",
-    quantity: 1,
-    unit_price: 10,
-  },
-  {
-    title: "Point Mini",
-    quantity: 1,
-    unit_price: 10,
-  },
-  {
-    title: "Point Mini2",
-    quantity: 2,
-    unit_price: 10,
-  },
-];
-
 class PaymentService {
   async createPayment(data:any) {
     
@@ -27,9 +9,9 @@ class PaymentService {
       payer_email: "${process.env.PAYER_EMAIL} ",
       items: data,
       back_urls: {
-        failure: "/failure",
-        pending: "/pending",
-        success: "/success",
+        failure: "/ecommerce--pf.vercel.app/",
+        pending: "/ecommerce--pf.vercel.app/",
+        success: "/ecommerce--pf.vercel.app/",
       },
     };
 

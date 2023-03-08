@@ -1,6 +1,5 @@
 import { Model ,DataTypes } from "sequelize";
 import  {sequelize} from "../db";
-import Product from "./products";
 class User extends Model {
     public id!: string;
     public name!: string;
