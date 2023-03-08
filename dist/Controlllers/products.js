@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.patchproduct = exports.patchpro = exports.borradologico = exports.postproduct = exports.getid = exports.getproduc = void 0;
+exports.patchproduct = exports.borradologico = exports.postproduct = exports.getid = exports.getproduc = void 0;
 const Brand_1 = __importDefault(require("../models/Brand"));
 const category_1 = __importDefault(require("../models/category"));
 const products_1 = __importDefault(require("../models/products"));
@@ -105,67 +105,16 @@ const postproduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.postproduct = postproduct;
 const borradologico = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    try {
-        const borrado = yield products_1.default.findByPk(id);
-        if (borrado === null) {
-            res.status(200).send(`resource with id ${id} not found`);
-        }
-        else if (!borrado.deleted) {
-            yield products_1.default.update({ deleted: true }, { where: { id: id } });
-            res
-                .status(200)
-                .json(`resource removed with id : ${id}`)
-                .send(`resource removed with id : ${id}`);
-        }
-        else if (borrado.deleted) {
-            yield products_1.default.update({ deleted: true }, { where: { id: id } });
-            res
-                .status(200)
-                .json({ message: "resource restored" })
-                .send({ message: "resource restored" });
-        }
-    }
-    catch (error) {
-        res.status(500).json({ error: "Server error" });
-    }
+    yield products_1.default.update({
+        deleted: true,
+    }, {
+        where: {
+            id,
+        },
+    });
+    res.status(201).json({ message: "Product deleted successfully" });
 });
 exports.borradologico = borradologico;
-const patchpro = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const { rating, deleted, price, img, description, quantity, name, category_id, Marca, } = req.body;
-    try {
-        const product = yield products_1.default.findByPk(id);
-        if (!product) {
-            res.status(201).json({ error: "Product not found" });
-        }
-        else {
-            // Busca la categoría en la base de datos
-            const category = yield category_1.default.findOne({ where: { id: category_id } });
-            if (category === null) {
-                res.status(202).json({ error: "Category does not exist" });
-            }
-            else {
-                // Actualiza el producto con los datos proporcionados
-                yield product.update({
-                    rating,
-                    deleted,
-                    price,
-                    img,
-                    description,
-                    quantity,
-                    name,
-                    category_id,
-                    Marca,
-                });
-                res.status(200).json({ message: "Product updated successfully" });
-            }
-        }
-    }
-    catch (error) {
-        res.status(500).json({ error: "Server error" });
-    }
-});
-exports.patchpro = patchpro;
 // {
 //   "name" : "drone 55l",
 //   "quantity" :  5 ,
