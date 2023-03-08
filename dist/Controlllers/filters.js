@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getBrand = exports.filterProductsByName = exports.filterProductsByRating = exports.filterProductsByCategory = exports.filterProductsByBrand = exports.filterProductsByPrice = void 0;
+exports.filterProductsByName = exports.filterProductsByRating = exports.filterProductsByCategory = exports.filterProductsByBrand = exports.filterProductsByPrice = void 0;
 const products_1 = __importDefault(require("../models/products"));
 const sequelize_1 = require("sequelize");
 const filterProductsByPrice = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -98,20 +98,17 @@ const filterProductsByName = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.filterProductsByName = filterProductsByName;
-const getBrand = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const product = yield products_1.default.findAll({
-            attributes: ["Marca"],
-        });
-        if (!product) {
-            res.status(404).json({ error: "Product not found" });
-        }
-        else {
-            res.status(200).json(product);
-        }
-    }
-    catch (error) {
-        res.status(500).json({ message: "Internal server error" });
-    }
-});
-exports.getBrand = getBrand;
+// export const getBrand = async (req: Request, res: Response): Promise<void> => {
+//   try {
+//     const product = await Products.findAll({
+//       attributes: ["Marca"],
+//     });
+//     if (!product ) {
+//       res.status(404).json({ error: "Product not found" });
+//     }else {
+//       res.status(200).json(product);
+//     }
+//   } catch (error) {
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// };
