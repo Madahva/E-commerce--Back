@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = require("../db"); // Importa la instancia de Sequelize
+const products_1 = __importDefault(require("./products"));
 class Category extends sequelize_1.Model {
 }
 Category.init({
@@ -19,8 +23,8 @@ Category.init({
     sequelize: db_1.sequelize,
     tableName: "Category",
     createdAt: false,
-    updatedAt: false,
+    updatedAt: false
 });
-// Category.hasMany(Product, { foreignKey: "category_id" });
-// Product.belongsTo(Category, { foreignKey: "category_id" });
+Category.hasMany(products_1.default, { foreignKey: 'category_id' });
+products_1.default.belongsTo(Category, { foreignKey: 'category_id' });
 exports.default = Category;

@@ -83,6 +83,6 @@ export const readCategory = async (req: Request, res: Response): Promise<void> =
 }
 
 export async function here() {
-    
+    console.log("here")
 }
   
