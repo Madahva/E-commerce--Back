@@ -22,7 +22,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, DB_DEPLOY } = process.e
 //     native: false,
 //     logging: false,
 //   }
-// );
+//);
 exports.sequelize = new sequelize_1.Sequelize(DB_DEPLOY, {
     host: DB_PORT,
     dialect: "postgres",

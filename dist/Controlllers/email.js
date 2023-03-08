@@ -30,14 +30,16 @@ const pago = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             from: "HyreMySkills@gmail.com",
             to: `${email}`,
             subject: `SUCCESSFUL PAYMENT 👏`,
-            html: `${name}THANK YOU FOR YOUR PURCHASE AND BE PART OF ECOMERCE. ✍️📉`,
+            html: `THANK YOU FOR YOUR PURCHASE AND BE PART OF ECOMERCE. ✍️📉`,
         };
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 res.send(error);
+                console.log(error);
             }
             else {
                 res.send("Email enviado: " + info.response);
+                console.log("Email enviado: " + info.response);
             }
         });
     }
@@ -60,19 +62,22 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             from: "HyreMySkills@gmail.com",
             to: `${email}`,
             subject: `WELCOME A ECOMERCE 👏`,
-            html: `${name}THANK YOU FOR SUBSCRIBING TO OUR PAGE ENJOY GREAT DISCOUNTS. 👾⚒️`,
+            html: `THANK YOU FOR SUBSCRIBING TO OUR PAGE ENJOY GREAT DISCOUNTS. 👾⚒️`,
         };
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 res.send(error);
+                console.log(error);
             }
             else {
                 res.send("Email enviado: " + info.response);
+                console.log("Email enviado: " + info.response);
             }
         });
     }
     catch (error) {
         res.status(402).send(error);
+        console.log(error);
     }
 });
 exports.newUser = newUser;

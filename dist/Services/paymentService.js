@@ -33,6 +33,7 @@ const items = [
 class PaymentService {
     createPayment(data) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(data);
             const url = "https://api.mercadopago.com/checkout/preferences";
             const body = {
                 payer_email: "${process.env.PAYER_EMAIL} ",
