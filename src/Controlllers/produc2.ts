@@ -36,7 +36,7 @@ export const postproduct = async (
       }else {
         // Busca la categoría y la marca en la base de datos
         const category = await Category.findOne({ where: { id: category_id } });
-        const brandg = await Brand.findOne({ where: { brand: Marca } });
+        const brandg = await Brand.findOne({ where: { id: Marca } });
         
         if (category === null) {
           res.status(400).json({ error: "Category does not exist" });
@@ -54,7 +54,7 @@ export const postproduct = async (
             quantity,
             name,
             category_id: category.id,
-            Marca,
+            Marca: brandg.id,
           });
   
           res.status(201).json({ message: "Product created successfully" });

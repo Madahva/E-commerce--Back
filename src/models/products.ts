@@ -13,7 +13,6 @@ class Product extends Model {
   public price!: string;
   public deleted!: boolean;
   public rating!: string;
-  public Marca!: string;
 
   // Define las propiedades de la relación
   public readonly Category?: Category;
