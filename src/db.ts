@@ -1,13 +1,13 @@
 
 import { Sequelize } from "sequelize";
 import { config } from "dotenv";
-import User from "./models/User";
-import { truncate } from "fs";
+
 
 
 config();
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT , DB_DEPLOY } = process.env;
+
 
 // export const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecomerce`,
@@ -46,4 +46,5 @@ export const sequelize = new Sequelize(
     console.error("Unable to sync to the database:", error);
   }
 })();
+
 

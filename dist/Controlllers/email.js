@@ -19,26 +19,27 @@ const pago = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, email } = req.body;
     try {
         //creacion y configuracion del envio de mail
-        let transporter = nodemailer_1.default.createTransport({
-            host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
+        var transporter = yield nodemailer_1.default.createTransport({
+            service: "gmail",
             auth: {
-                user: GMAIL_ADMIN,
-                pass: PASSWORD_ADMIN, // generated ethereal password
-            },
-            tls: {
-                rejectUnauthorized: false,
+                user: "HyreMySkills@gmail.com",
+                pass: PASSWORD_ADMIN,
             },
         });
-        //mensaje que se envia al mail
-        let informacion = yield transporter.sendMail({
-            from: `${GMAIL_ADMIN}`,
+        var mailOptions = {
+            from: "HyreMySkills@gmail.com",
             to: `${email}`,
-            subject: "SUCCESSFUL PAYMENT ",
-            html: `Hello ${name} 🛒.thank you for shopping with us in a few days your order will arrive👌. <a href='https://ecommerce-pf.vercel.app/'>Enter here to return to the site</a>`, // html body
+            subject: `SUCCESSFUL PAYMENT 👏`,
+            html: `${name}THANK YOU FOR YOUR PURCHASE AND BE PART OF ECOMERCE. ✍️📉`,
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                res.send(error);
+            }
+            else {
+                res.send("Email enviado: " + info.response);
+            }
         });
-        res.status(200).send(informacion);
     }
     catch (error) {
         res.status(402).send(error);
@@ -48,64 +49,30 @@ exports.pago = pago;
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, email } = req.body;
     try {
-        let transporter = nodemailer_1.default.createTransport({
-            host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
+        var transporter = yield nodemailer_1.default.createTransport({
+            service: "gmail",
             auth: {
-                user: GMAIL_ADMIN,
+                user: "HyreMySkills@gmail.com",
                 pass: PASSWORD_ADMIN,
             },
-            tls: {
-                rejectUnauthorized: false,
-            },
         });
-        let info = yield transporter.sendMail({
-            from: `${GMAIL_ADMIN}>`,
+        var mailOptions = {
+            from: "HyreMySkills@gmail.com",
             to: `${email}`,
-            subject: "BIENVENID@ A ECOMERCE",
-            html: `Hello ${name}. Thank you very much for joining HIREMY SKILLS 👏. <br></br>We invite you to browse our page and find the ideal purchase.  
-           .<br></br>the best shopping site✍️📉 <br></br>
-           <a href='https://ecommerce-pf.vercel.app/'>Enter here to return to the site</a> - <br></br>
-          `,
+            subject: `WELCOME A ECOMERCE 👏`,
+            html: `${name}THANK YOU FOR SUBSCRIBING TO OUR PAGE ENJOY GREAT DISCOUNTS. 👾⚒️`,
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                res.send(error);
+            }
+            else {
+                res.send("Email enviado: " + info.response);
+            }
         });
-        res.status(200).send(info);
     }
     catch (error) {
         res.status(402).send(error);
-        console.log(error);
     }
 });
 exports.newUser = newUser;
-// export  const  newUser = async(req : Request , res : Response):Promise<void>=>{
-//     const { name, email } = req.body
-//   //creacion y configuracion del envio de mail
-// try{
-//   let transporter = nodemailer.createTransport({
-//     host: "smtp.gmail.com",
-//     port: 465,
-//     secure: true, // true for 465, false for other ports
-//     auth: {
-//       user: "HyreMySkills@gmail.com", // generated ethereal user
-//       pass: "zmqaurfzdaozwfsk", // generated ethereal password
-//     },
-//     tls: {
-//       rejectUnauthorized: false,
-//     },
-//   });
-//   //mensaje que se envia al mail
-//   let informacion = await transporter.sendMail({
-//     from: `"Ecomerce 👾⚒️" <${GMAIL_ADMIN}>`, // sender address
-//     to: email, // list of receivers
-//     subject: " BIENVENID@ A HIREMYSKILLS ", // Subject line
-//     html: `Hello ${name} . Thank you very much for joining HIREMY SKILLS 👏. <br></br>We invite you to browse our page and find the ideal purchase.  
-//          .<br></br>the best shopping site✍️📉 <br></br>
-//          <a href='https://ecommerce-pf.vercel.app/'> Enter here to return to the site</a> - <br></br>
-//         `, // html body
-//   });
-//   res.status(200).send(informacion)
-// }catch(error){
-//     res.status(402).send(error);
-//     console.log(error);
-// }
-// }

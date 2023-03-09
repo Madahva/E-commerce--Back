@@ -83,7 +83,6 @@ const readCategory = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 exports.readCategory = readCategory;
 function here() {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("here");
     });
 }
 exports.here = here;

@@ -12,45 +12,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getId = exports.getcategory = exports.crearcate = void 0;
-const category_1 = __importDefault(require("../models/category"));
-const crearcate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { typecategory } = req.body;
+exports.getIdbrand = exports.getbrand = exports.createByBrand = void 0;
+const Brand_1 = __importDefault(require("../models/Brand"));
+const createByBrand = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { brand, img } = req.body;
     try {
-        const fil = yield category_1.default.findOne({
-            where: { typecategory: typecategory },
+        const fil = yield Brand_1.default.findOne({
+            where: { brand: brand },
         });
         if (fil !== null) {
-            res.status(400).json({ error: "Product already exists" });
+            res.status(400).json({ error: "Brand  already exists" });
         }
         else {
-            const db = yield category_1.default.create({ typecategory });
+            const db = yield Brand_1.default.create({ brand, img });
             res.status(200).send("create succesfully");
         }
     }
     catch (error) {
-        res.status(500).json({ error: "Server error" });
+        res.status(500).json({ error: "Server error  " });
     }
 });
-exports.crearcate = crearcate;
-const getcategory = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.createByBrand = createByBrand;
+const getbrand = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const cot = yield category_1.default.findAll();
+        const cot = yield Brand_1.default.findAll();
         res.status(200).send(cot);
     }
     catch (error) {
-        res.status(500).json({ error: "Server error" });
+        console.log(error);
+        res.status(500).send(error);
     }
 });
-exports.getcategory = getcategory;
-const getId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getbrand = getbrand;
+const getIdbrand = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const inffo = yield category_1.default.findByPk(id);
+        const inffo = yield Brand_1.default.findByPk(id);
         res.status(200).send(inffo);
     }
     catch (error) {
-        res.status(500).json({ error: "Server error" });
+        res.status(500).json({ error: "Server error  " });
     }
 });
-exports.getId = getId;
+exports.getIdbrand = getIdbrand;

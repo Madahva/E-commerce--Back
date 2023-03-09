@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.patchproduct = exports.borradologico = exports.postproduct = exports.getid = exports.getproduc = void 0;
+exports.borradologico = exports.getid = exports.getproduc = void 0;
 const category_1 = __importDefault(require("../models/category"));
 const products_1 = __importDefault(require("../models/products"));
 const getproduc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -20,8 +20,8 @@ const getproduc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!name) {
             const db = yield products_1.default.findAll({ include: category_1.default });
-            const fi = db.filter((dr) => dr.deleted === false);
-            res.status(200).send(fi);
+            // const fi = db.filter((dr) => dr.deleted === false);
+            res.status(200).send(db);
         }
         else {
             const filterna = yield products_1.default.findAll({ include: category_1.default });
@@ -30,7 +30,6 @@ const getproduc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 res.status(404).json({ message: "product not found" });
             }
             else if (filter[0].deleted === true) {
-                console.log(filter[0]);
                 res.status(404).json({ message: "removed product" });
             }
             else {
@@ -40,14 +39,12 @@ const getproduc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (error) {
         res.status(402).send(error);
-        console.log(error);
     }
 });
 exports.getproduc = getproduc;
 const getid = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        console.log("entre otro");
         const iddb = yield products_1.default.findByPk(id);
         res.status(200).json(iddb);
     }
@@ -56,70 +53,16 @@ const getid = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getid = getid;
-const postproduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id, rating, deleted, price, img, description, quantity, name, category_id, Marca, } = req.body;
-    try {
-        const repet = yield products_1.default.findOne({ where: { name: name } });
-        if (repet !== null) {
-            res.status(400).json({ error: "Product already exists" });
-        }
-        else if (!price || !img || !description || !name) {
-            res.status(400).send({ error: "insert information" });
-        }
-        else if (!category_id) {
-            res.status(400).send({ error: "insert category" });
-        }
-        else {
-            // Busca la categoría en la base de datos
-            const category = yield category_1.default.findOne({ where: { id: category_id } });
-            if (category === null) {
-                res.status(400).json({ error: "Category does not exist" });
-            }
-            else {
-                // Crea el producto con el id de la categoría
-                const newproduct = yield products_1.default.create({
-                    id,
-                    rating,
-                    deleted,
-                    price,
-                    img,
-                    description,
-                    quantity,
-                    name,
-                    category_id: category.id,
-                    Marca,
-                });
-                res.status(201).json({ message: "Product created successfully" });
-            }
-        }
-    }
-    catch (error) {
-        res.status(500).json({ error: "Server error" });
-        console.log(error);
-    }
-});
-exports.postproduct = postproduct;
 const borradologico = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    console.log("entre2");
-    try {
-        const borrado = yield products_1.default.findByPk(id);
-        console.log("entre");
-        if (borrado === null) {
-            res.status(200).send(`resource with id ${id} not found`);
-        }
-        else if (!borrado.deleted) {
-            yield products_1.default.update({ deleted: true }, { where: { id: id } });
-            res.status(200).json(`resource removed with id : ${id}`).send(`resource removed with id : ${id}`);
-        }
-        else if (borrado.deleted) {
-            yield products_1.default.update({ deleted: true }, { where: { id: id } });
-            res.status(200).json({ message: "resource restored" }).send({ message: "resource restored" });
-        }
-    }
-    catch (error) {
-        res.status(500).json({ error: "Server error" });
-    }
+    yield products_1.default.update({
+        deleted: true,
+    }, {
+        where: {
+            id,
+        },
+    });
+    res.status(201).json({ message: "Product deleted successfully" });
 });
 exports.borradologico = borradologico;
 // {
@@ -131,39 +74,3 @@ exports.borradologico = borradologico;
 //    "rating" : 4,
 //    "Marca": "lg",
 //    "category_id": "drone"
-const patchproduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const { rating, deleted, price, img, description, quantity, name, category_id, Marca, } = req.body;
-    try {
-        const product = yield products_1.default.findByPk(id);
-        if (!product) {
-            res.status(201).json({ error: "Product not found" });
-        }
-        else {
-            // Busca la categoría en la base de datos
-            const category = yield category_1.default.findOne({ where: { id: category_id } });
-            if (category === null) {
-                res.status(202).json({ error: "Category does not exist" });
-            }
-            else {
-                // Actualiza el producto con los datos proporcionados
-                yield product.update({
-                    rating,
-                    deleted,
-                    price,
-                    img,
-                    description,
-                    quantity,
-                    name,
-                    category_id,
-                    Marca,
-                });
-                res.status(200).json({ message: "Product updated successfully" });
-            }
-        }
-    }
-    catch (error) {
-        res.status(500).json({ error: "Server error" });
-    }
-});
-exports.patchproduct = patchproduct;

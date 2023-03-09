@@ -18,15 +18,6 @@ User.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    rol: {
-        type: sequelize_1.DataTypes.BOOLEAN,
-        defaultValue: false,
-    },
-    deleted: {
-        //borrado logico
-        type: sequelize_1.DataTypes.BOOLEAN,
-        defaultValue: false,
-    },
 }, {
     timestamps: false,
     sequelize: db_1.sequelize,
@@ -34,4 +25,6 @@ User.init({
     createdAt: false,
     updatedAt: false
 });
+// Product.hasMany(User, { foreignKey: 'user_id' });
+//  User.belongsTo(Product, { foreignKey: 'user_id' });
 exports.default = User;

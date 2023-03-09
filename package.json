@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-   "start": "ts-node-dev index.ts",
+    "start": "ts-node-dev index.ts",
     "dev": "concurrently \"tsc -w\" \"nodemon index.ts\"",
     "tc": "tsc",
     "st": "concurrently \"tsc --watch\" \"nodemon index.ts\"",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@types/pg": "^8.6.6",
     "@types/sequelize": "^4.28.14",
+    "axios": "^1.3.4",
     "body-parser": "^1.20.1",
     "concurrently": "^7.6.0",
     "cookie-parser": "^1.4.6",
