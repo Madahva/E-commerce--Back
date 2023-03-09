@@ -88,8 +88,8 @@ export const readProducts = async (
     {
       name: "PlayStation 5",
       quantity: 2,
-      description: "Consola de videojuegos de última generación",
-      img: "https://http2.mlstatic.com/D_NQ_NP_627149-MLA44484230438_012021-O.webp",
+      description: "Consola de videojuegos de última generación", 
+      img: "https://http2.mlstatic.com/D_NQ_NP_841787-MLA44484414455_012021-O.webp",
       price: 599.5,
       rating: 4,
       Marca: 4,
@@ -190,7 +190,7 @@ export const readProducts = async (
       quantity: 1,
       description:
         "Consola portátil con pantalla táctil y juegos preinstalados",
-      img: "https://http2.mlstatic.com/D_NQ_NP_841787-MLA44484414455_012021-O.webp",
+      img: "https://http2.mlstatic.com/D_NQ_NP_627149-MLA44484230438_012021-O.webp",
       price: 299.5,
       rating: 4,
       Marca: 10,
@@ -352,6 +352,105 @@ export const readProducts = async (
       Marca: 15,
       category_id: 9,
     },
+    {
+      name: "Iphone 12 XPRO",
+      quantity: 5,
+      description: "El último modelo de smartphone de alta gama",
+      img: "https://www.alemaniacell.com/uploads/ximagen-principal16231-1-1614276022.webp.pagespeed.ic.1W18gSXm_y.webp",
+      price: 765.89,
+      rating: 3,
+      Marca:6,
+      category_id: 1,
+    },
+
+    {
+      name: "Televisor HP ULTRA k MEGA PRO",
+      quantity: 8,
+      description: "Televisor inteligente de última generación",
+      img: "https://http2.mlstatic.com/D_NQ_NP_2X_695235-MLA44405482025_122020-V.webp",
+      price: 1250.75,
+      rating: 4,
+      Marca: 8,
+      category_id: 2,
+    },
+
+    {
+      name: "Asus Legion 3 MAX",
+      quantity: 3,
+      description: "Portátil para trabajo y entretenimiento",
+      img: "https://http2.mlstatic.com/D_NQ_NP_608219-MCO46015579129_052021-O.webp",
+      price: 899.99,
+      rating: 5,
+      Marca: 3,
+      category_id: 3,
+    },
+
+    {
+      name: "Nintendo Switch",
+      quantity: 2,
+      description: "Consola de videojuegos de última generación",
+      img: "https://www.tauretcomputadores.com/images/products/Product_20221010164555832571325.Azul-1.webp",
+      price: 599.5,
+      rating: 4,
+      Marca: 15,
+      category_id: 4,
+    },
+
+    {
+      name: "Canon R6",
+      quantity: 4,
+      description: "Cámara fotográfica profesional",
+      img: "https://http2.mlstatic.com/D_NQ_NP_759013-MLA45730771605_042021-O.webp",
+      price: 1599.99,
+      rating: 2,
+      Marca: 4,
+      category_id: 5,
+    },
+
+    {
+      name: "Watch Ultra Sonic",
+      quantity: 6,
+      description: "Reloj inteligente de alta calidad",
+      img: "https://http2.mlstatic.com/D_NQ_NP_2X_684284-MLA46397778472_062021-V.webp",
+      price: 399.99,
+      rating: 3,
+      Marca: 4,
+      category_id: 6,
+    },
+
+    {
+      name: "Altavoz Estelar Panic",
+      quantity: 10,
+      description: "Altavoces inalámbricos con excelente calidad de sonido",
+      img: "https://http2.mlstatic.com/D_NQ_NP_904923-MCO49170387048_022022-O.webp",
+      price: 299.99,
+      rating: 4,
+      Marca: 5,
+      category_id: 7,
+    },
+
+    {
+      name: "Super drone 7800X",
+      quantity: 7,
+      description: "Drone con cámara HD y control remoto",
+      img: "hhttps://http2.mlstatic.com/D_NQ_NP_739978-MLA48944084291_012022-O.webp",
+      price: 899.5,
+      rating: 5,
+      Marca: 6,
+      category_id: 8,
+    },
+
+    {
+      name: "Lenovo Fantastic 52",
+      quantity: 12,
+      description: "Auriculares inalámbricos con cancelación de ruido",
+      img: "https://http2.mlstatic.com/D_NQ_NP_2X_696927-MCO50999461091_082022-V.webp",
+      price: 199.99,
+      rating: 2,
+      Marca: 7,
+      category_id: 9,
+    },
+    
   ];
 
   let i = 0;
